@@ -32,8 +32,9 @@
 <meta property="og:image" content="http://example.com/images/git.jpg">
 <meta property="og:image" content="http://example.com/images/hexo-v.jpg">
 <meta property="og:image" content="http://example.com/images/hexo-init.jpg">
+<meta property="og:image" content="http://example.com/images/hexo-site.jpg">
 <meta property="article:published_time" content="2022-02-21T13:26:15.000Z">
-<meta property="article:modified_time" content="2022-02-22T07:06:41.675Z">
+<meta property="article:modified_time" content="2022-02-22T11:57:33.709Z">
 <meta property="article:author" content="Kevin Cheng">
 <meta property="article:tag" content="github">
 <meta property="article:tag" content="hexo">
@@ -204,7 +205,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-02-22 15:06:41" itemprop="dateModified" datetime="2022-02-22T15:06:41+08:00">2022-02-22</time>
+                <time title="修改時間：2022-02-22 19:57:33" itemprop="dateModified" datetime="2022-02-22T19:57:33+08:00">2022-02-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,14 +230,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>1.1k</span>
+              <span>2.6k</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              <span>1 分鐘</span>
+              <span>2 分鐘</span>
             </span>
 
         </div>
@@ -249,6 +250,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>儘管這幾年各種社群平台興起，舉凡眾所皆知的Fackbook、instagram、Twitter，乃至於Dcard、Telegram、Discord，讓許多人拋棄以往使用的部落格網站，像是時代的眼淚無名小站，但我始終覺得部落格有一種不為流量而耕耘的感覺，不是為了向朋友炫耀，也不是和家人摯友們分享，就是單純留給自己的一塊小空地，可以比較不在乎世俗外界的眼光，進而書寫自己想記錄的事物，寫文章何嘗不是一種好習慣?</p>
+<span id="more"></span>
 <p>身為一個資訊背景的研究生，其實這幾年不論是課業還是實驗室的工作，很常需要上網找資料自己解決問題，能夠自己解決問題而不是到處伸手牌好像成了工程師的一股傲氣(? (不過我也覺得變得越來越不會問問題了…這個以後再說)。總之，架設一個屬於自己的部落格有很多方式，我也嘗試過很多不同的平台，那這篇文章就是分享一下在<code>Github Pages</code>建立部落格的過程。</p>
 <h2 id="架設Hexo部落格"><a href="#架設Hexo部落格" class="headerlink" title="架設Hexo部落格"></a>架設Hexo部落格</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/">Hexo</a>是一個基於Node.js開發的網站框架，適合快速開發個人部落格，Hexo除了編譯速度快，也有很豐富的外掛套件，更能讓開發者快速的部署到Github Pages上。</p>
 <h3 id="Step-0-Github帳號"><a href="#Step-0-Github帳號" class="headerlink" title="Step 0 Github帳號"></a>Step 0 Github帳號</h3><p>因為部落格是基於<code>Github Pages</code>，所以必須要先有一個<a target="_blank" rel="noopener" href="https://github.com/">github</a>帳號，申請帳號沒有很複雜，網路上也很多資源了，就不多加贅述。</p>
@@ -269,7 +271,40 @@
 
 <h4 id="Hexo初始化"><a href="#Hexo初始化" class="headerlink" title="Hexo初始化"></a>Hexo初始化</h4><p>輸入指令建立Hexo資料夾，並安裝所需要的套件(要確認在新建立的資料夾底下安裝)。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;資料夾名稱&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;資料夾名稱&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<img src="/images/hexo-init.jpg" height="70%" width="70%">
+<img src="/images/hexo-init.jpg" height="60%" width="60%">
+
+<p>安裝完成後會出現很多的資料夾以及檔案，幾個比較常用到的如下:</p>
+<ul>
+<li>scaffolds: 裡面放著<code>draft</code>(草稿)、<code>page</code>(頁面)、<code>post</code>(文章)三種模板檔案，在hexo新增頁面、文章等時，會對應生成初始化的spec</li>
+<li>source: 存放所有的資源檔，包含文章、圖片、頁面等，部署時這裡的檔案會被解析編譯並更新到Github上</li>
+<li>themes: 若有要使用其他主題或是第三方開發的主題模板，就要將相關檔案丟進此處</li>
+<li>public: 部署上傳後才會出現的資料夾，這裡的檔案就是Github上公開的檔案</li>
+<li>_config.yml: 關於網站配置的設定都放在這個文件中，可以在這裡改變網站的設定，如:網站名稱、作者、語言、使用主題、部署資訊等<br>其他檔案與資料夾比較少會使用到，如果有興趣或是未來需要可以再找相關資源。</li>
+</ul>
+<h4 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h4><p>完成Hexo初始建置後，就可以先將檔案等部署到Github上。在hexo資料夾底下輸入指令安裝需要的套件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>到 <code>_config.yml</code> 中找到 <code>Deployment</code> 的區塊修改部署資訊，並將底下<i>username</i>改成自己的Github帳號:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
+<p>接著將hexo部署上去:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<p>完成後就可以透過 <code>https://&lt;username&gt;.github.io</code> 的網址進入到個人部落格了! Github有時候沒辦法馬上更新，稍微等個幾分鐘就可以看到自己的網站了，下圖是hexo預設的landscape主題模板。</p>
+<img src="/images/hexo-site.jpg" height="100%" width="100%">
+
+<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><p>Hexo的指令都可以在官方網站中搜尋，而部落格最常做的事情之一就是發文章了，這裡稍微簡述一下發一篇文章的流程:</p>
+<h4 id="新增一篇文章"><a href="#新增一篇文章" class="headerlink" title="新增一篇文章"></a>新增一篇文章</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>文章支援Markdown語法，產生的檔案也是md檔</li>
+<li><code>title</code>只是md檔的檔名，實際文章的標題可以在md檔裡更改，建議不要有空格、非英文等，避免出錯</li>
+<li>新增後可以在 <code>source/_posts/</code> 資料夾底下找到文章的md檔</li>
+</ul>
+<h4 id="更新並部署文章"><a href="#更新並部署文章" class="headerlink" title="更新並部署文章"></a>更新並部署文章</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  // 清除靜態檔案與快取</span><br><span class="line">hexo generate  // 產生靜態檔案</span><br><span class="line">hexo deploy  // 部署到Github上</span><br></pre></td></tr></table></figure>
+<p>也可以簡化成以下指令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d  // 產生靜態檔案後部署</span><br></pre></td></tr></table></figure>
+<h4 id="本地端伺服器"><a href="#本地端伺服器" class="headerlink" title="本地端伺服器"></a>本地端伺服器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server  // crtl+C 停止運行</span><br></pre></td></tr></table></figure>
+<p>指令打完就會看到server跑起來了，這時候到網頁打 <code>http://localhost:4000/</code> 就可以看到自己的網頁。<br>我自己會先在本地端測試修改後再一次部署上去Github，因為檔案的修改可以馬上在本地端看到變動，也省去一直部署的麻煩。</p>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>這篇文章講解了架部落格從0到1到過程，上述的指令大概就夠應付日常發文需求了，至於要怎麼讓部落格從1到100就是未來的工作了(我也還在學習當中…) 接下來我會講解一下我正在使用也是目前非常powerful的模板<a target="_blank" rel="noopener" href="https://theme-next.org/">Next</a>，使用這個開源的hexo主題模板可以省去非常多網站設計的時間的精力，也很不同的簡約風格，我個人滿喜歡的~</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://pages.github.com/">Github Pages</a><br><a target="_blank" rel="noopener" href="https://hackmd.io/@Heidi-Liu/note-hexo-github">如何使用 Hexo + GitHub Pages 架設個人網誌</a></p>
+
     </div>
 
     
@@ -350,7 +385,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%B6%E8%A8%ADHexo%E9%83%A8%E8%90%BD%E6%A0%BC"><span class="nav-number">2.</span> <span class="nav-text">架設Hexo部落格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-0-Github%E5%B8%B3%E8%99%9F"><span class="nav-number">2.1.</span> <span class="nav-text">Step 0 Github帳號</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-1-%E5%BB%BA%E7%AB%8Brepoitory"><span class="nav-number">2.2.</span> <span class="nav-text">Step 1 建立repoitory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-2-%E5%BB%BA%E7%BD%AEHexo%E7%92%B0%E5%A2%83"><span class="nav-number">2.3.</span> <span class="nav-text">Step 2 建置Hexo環境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-number">2.3.1.</span> <span class="nav-text">前置作業</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo%E7%92%B0%E5%A2%83"><span class="nav-number">2.3.2.</span> <span class="nav-text">Hexo環境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">2.3.3.</span> <span class="nav-text">Hexo初始化</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%B6%E8%A8%ADHexo%E9%83%A8%E8%90%BD%E6%A0%BC"><span class="nav-number">2.</span> <span class="nav-text">架設Hexo部落格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-0-Github%E5%B8%B3%E8%99%9F"><span class="nav-number">2.1.</span> <span class="nav-text">Step 0 Github帳號</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-1-%E5%BB%BA%E7%AB%8Brepoitory"><span class="nav-number">2.2.</span> <span class="nav-text">Step 1 建立repoitory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-2-%E5%BB%BA%E7%BD%AEHexo%E7%92%B0%E5%A2%83"><span class="nav-number">2.3.</span> <span class="nav-text">Step 2 建置Hexo環境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-number">2.3.1.</span> <span class="nav-text">前置作業</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo%E7%92%B0%E5%A2%83"><span class="nav-number">2.3.2.</span> <span class="nav-text">Hexo環境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">2.3.3.</span> <span class="nav-text">Hexo初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0Github"><span class="nav-number">2.3.4.</span> <span class="nav-text">部署到Github</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">2.4.</span> <span class="nav-text">常用指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0"><span class="nav-number">2.4.1.</span> <span class="nav-text">新增一篇文章</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E4%B8%A6%E9%83%A8%E7%BD%B2%E6%96%87%E7%AB%A0"><span class="nav-number">2.4.2.</span> <span class="nav-text">更新並部署文章</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%BC%BA%E6%9C%8D%E5%99%A8"><span class="nav-number">2.4.3.</span> <span class="nav-text">本地端伺服器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-number">3.</span> <span class="nav-text">結語</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -432,12 +467,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="總字數">1k</span>
+    <span title="總字數">3k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">1 分鐘</span>
+    <span title="所需總閱讀時間">3 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
   </div>
