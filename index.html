@@ -177,7 +177,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/21/build-up-blog/" class="post-title-link" itemprop="url">建立自己的部落格 | Build up my blog</a>
+            <a href="/2022/02/21/build-up-blog/" class="post-title-link" itemprop="url">建立自己的部落格</a>
         </h2>
 
         <div class="post-meta">
@@ -186,10 +186,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2022-02-21 21:26:15 / 修改時間：21:59:48" itemprop="dateCreated datePublished" datetime="2022-02-21T21:26:15+08:00">2022-02-21</time>
+              <time title="創建時間：2022-02-21 21:26:15" itemprop="dateCreated datePublished" datetime="2022-02-21T21:26:15+08:00">2022-02-21</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-02-22 15:06:41" itemprop="dateModified" datetime="2022-02-22T15:06:41+08:00">2022-02-22</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -206,7 +212,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>0</span>
+              <span>1.1k</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -225,7 +231,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>儘管這幾年各種社群平台興起，舉凡眾所皆知的Fackbook、instagram、Twitter，乃至於Dcard、Telegram、Discord，讓許多人拋棄以往使用的部落格網站，像是時代的眼淚無名小站，但我始終覺得部落格有一種不為流量而耕耘的感覺，不是為了向朋友炫耀，也不是和家人摯友們分享，就是單純留給自己的一塊小空地，可以比較不在乎世俗外界的眼光，進而書寫自己想記錄的事物，寫文章何嘗不是一種好習慣?</p>
+<p>身為一個資訊背景的研究生，其實這幾年不論是課業還是實驗室的工作，很常需要上網找資料自己解決問題，能夠自己解決問題而不是到處伸手牌好像成了工程師的一股傲氣(? (不過我也覺得變得越來越不會問問題了…這個以後再說)。總之，架設一個屬於自己的部落格有很多方式，我也嘗試過很多不同的平台，那這篇文章就是分享一下在<code>Github Pages</code>建立部落格的過程。</p>
+<h2 id="架設Hexo部落格"><a href="#架設Hexo部落格" class="headerlink" title="架設Hexo部落格"></a>架設Hexo部落格</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/">Hexo</a>是一個基於Node.js開發的網站框架，適合快速開發個人部落格，Hexo除了編譯速度快，也有很豐富的外掛套件，更能讓開發者快速的部署到Github Pages上。</p>
+<h3 id="Step-0-Github帳號"><a href="#Step-0-Github帳號" class="headerlink" title="Step 0 Github帳號"></a>Step 0 Github帳號</h3><p>因為部落格是基於<code>Github Pages</code>，所以必須要先有一個<a target="_blank" rel="noopener" href="https://github.com/">github</a>帳號，申請帳號沒有很複雜，網路上也很多資源了，就不多加贅述。</p>
+<h3 id="Step-1-建立repoitory"><a href="#Step-1-建立repoitory" class="headerlink" title="Step 1 建立repoitory"></a>Step 1 建立repoitory</h3><p>有了github帳號後，透過建立一個專案存放所有部落格網站需要用到的資源(如下圖所示)，在Repository name中要填入<code>&lt;username&gt;.github.io</code>，其中<i>username</i>就是自己的帳號。</p>
+<img src="/images/repo.jpg" height="75%" width="75%">
+
+<h3 id="Step-2-建置Hexo環境"><a href="#Step-2-建置Hexo環境" class="headerlink" title="Step 2 建置Hexo環境"></a>Step 2 建置Hexo環境</h3><h4 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h4><p>Hexo是基於Node.js開發的，所以在使用hexo之前我們需要安裝<a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js</a>，直接到他們的官方網站下載並安裝，選擇左邊的LTS(右邊是最新的版本，可能沒有經過大量的環境測試，較為不穩定)。</p>
+<img src="/images/nodejs.jpg" height="75%" width="75%">
+
+<p>另外我們也需要安裝<a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a>，幫助我們將網站部署到Github上或是clone不同模板的專案，安裝完成後在資料夾點擊右鍵如果可以看到下圖中的Git兩個選項就是安裝完成。</p>
+<img src="/images/git.jpg" height="25%" width="25%">
+
+<h4 id="Hexo環境"><a href="#Hexo環境" class="headerlink" title="Hexo環境"></a>Hexo環境</h4><p>完成安裝後就可以正式開始建置Hexo的環境了，打開上圖中的<code>Git Bash Here</code>(或是任何的CLI介面，如:cmd、終端機等)，並使用一下指令安裝Hexo:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<p>安裝後可以透過以下指令檢查Hexo版本，確認安裝完成:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+<img src="/images/hexo-v.jpg" height="40%" width="40%">
+
+<h4 id="Hexo初始化"><a href="#Hexo初始化" class="headerlink" title="Hexo初始化"></a>Hexo初始化</h4><p>輸入指令建立Hexo資料夾，並安裝所需要的套件(要確認在新建立的資料夾底下安裝)。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;資料夾名稱&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;資料夾名稱&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<img src="/images/hexo-init.jpg" height="70%" width="70%">
       
     </div>
 
@@ -258,7 +285,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/21/hello-world/" class="post-title-link" itemprop="url">你好，世界! | Hello World!</a>
+            <a href="/2022/02/21/hello-world/" class="post-title-link" itemprop="url">Hello World! 你好，世界!</a>
         </h2>
 
         <div class="post-meta">
@@ -267,10 +294,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2022-02-21 20:20:15 / 修改時間：21:58:39" itemprop="dateCreated datePublished" datetime="2022-02-21T20:20:15+08:00">2022-02-21</time>
+              <time title="創建時間：2022-02-21 20:20:15" itemprop="dateCreated datePublished" datetime="2022-02-21T20:20:15+08:00">2022-02-21</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-02-22 13:51:19" itemprop="dateModified" datetime="2022-02-22T13:51:19+08:00">2022-02-22</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -404,7 +437,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -457,7 +490,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="總字數">0k</span>
+    <span title="總字數">1k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
