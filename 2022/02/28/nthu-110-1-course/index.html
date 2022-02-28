@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/guitar-large.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/guitar-large.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/guiar-small.png">
+  <link rel="mask-icon" href="/images/guitar-solid.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="來到清大的第一個學期，一直對這間學校既陌生又熟悉啊…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="110 Fall 清大修課心得【深度學習&#x2F;網路科學】">
+<meta property="og:url" content="http://example.com/2022/02/28/nthu-110-1-course/index.html">
+<meta property="og:site_name" content="大哲的碼農生活">
+<meta property="og:description" content="來到清大的第一個學期，一直對這間學校既陌生又熟悉啊…">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-02-28T07:43:52.000Z">
+<meta property="article:modified_time" content="2022-02-28T07:44:53.785Z">
+<meta property="article:author" content="Kevin Cheng">
+<meta property="article:tag" content="修課">
+<meta property="article:tag" content="心得">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/02/28/nthu-110-1-course/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>110 Fall 清大修課心得【深度學習/網路科學】 | 大哲的碼農生活</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">大哲的碼農生活</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/nthu-110-1-course/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pfp.jpg">
+      <meta itemprop="name" content="Kevin Cheng">
+      <meta itemprop="description" content="你有多自律，就有多自由">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大哲的碼農生活">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          110 Fall 清大修課心得【深度學習/網路科學】
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2022-02-28 15:43:52 / 修改時間：15:44:53" itemprop="dateCreated datePublished" datetime="2022-02-28T15:43:52+08:00">2022-02-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%A1%E5%9C%92%E7%A8%AE%E7%A8%AE/" itemprop="url" rel="index"><span itemprop="name">校園種種</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>4.2k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>4 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>來到清大的第一個學期，一直對這間學校既陌生又熟悉啊…</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>秉持著大學的修課習慣: 補(學的到東西) &gt; 甜(分數好拿) &gt; 涼(loading輕)，加上四下修的<a target="_blank" rel="noopener" href="https://chengche6230.github.io/2022/02/24/nctu-109-2/">課程套餐</a>滿喜歡的，來到清大後就開始找一些學的到東西的課程，也想找有挑戰性、實作性足夠的課(現在回頭看來真是傻哈哈)，最終就選了以下課程:</p>
+<ul>
+<li>資工所 吳尚鴻老師的深度學習</li>
+<li>通訊所 張正尚老師的網路科學</li>
+</ul>
+<p>(其實還有修軍訓、書報等課程，但不太值得一提了)</p>
+<h2 id="深度學習"><a href="#深度學習" class="headerlink" title="深度學習"></a>深度學習</h2><p>看來看去和我研究領域相近的課程實在不多，學長姐和同屆也都有選這堂課，最後也選了<a target="_blank" rel="noopener" href="http://www.cs.nthu.edu.tw/~shwu/">吳尚鴻</a>老師的深度學習，我對這堂課大概是喜惡參半，沒有讓我非常喜歡，後面再讓我娓娓道來。這堂課的上課模式大概是: 老師每週上兩堂課，助教們上一堂的實驗課，另外有很多次的Lab以及四次的Competition。以往這堂課程不會有考試，但在學期初因為疫情慢慢解封的關係，多數課程都恢復實體上課，老師也讓同學們表決兩種配分方案，分別是:</p>
+<ul>
+<li>作業們 + 一次期中考</li>
+<li>作業們 + 上課參與(規定要舉手發言或問答幾次)</li>
+</ul>
+<p>不出意料，結果就是很亞洲的一次期中考(我自己也投這個選項XD)，不過我並不是不喜歡問問題，主要是我覺得考試還是會迫使有動力複習和讀書，我上課的目的也是希望能有所收穫而不是白白混過去，就投這個了~</p>
+<p>甜: ★★★☆☆<br>涼: ★☆☆☆☆<br>補: ★★★★☆</p>
+<p>修課成績排名: 1&#x2F;67 (同個等級排名都一樣，所以會有很多第一名)</p>
+<h3 id="Lab"><a href="#Lab" class="headerlink" title="Lab"></a>Lab</h3><p>先來說說作業Lab的部分，作業本身其實很簡單，偉大的助教們多數都有寫好很完整的Spec，只要fill in就好了，助教們寫的notebook也是很完整，我覺得讀完他們的notebook收穫大於寫那些作業哈哈，所以我覺得作業的意義可能比較像是強迫學生去讀完那些notebook，很多作業都只是在複製貼上，讓我覺得作業有點煩，每週都有一個作業，有時候又會撞到Competition或其他科目的期中考，時間有點被消磨光，我比較喜歡需要動頭腦的作業(如:需要做實驗研究的作業或是上課內容的數學推導等)，然後次數少一點，就是重質不重量的意思。</p>
+<h3 id="Competition"><a href="#Competition" class="headerlink" title="Competition"></a>Competition</h3><p>Competition比較符合上述需要做實驗研究的性質，所以我個人也比較喜歡這個部分。競賽是利用<a target="_blank" rel="noopener" href="https://www.kaggle.com/">Kaggle</a>平台舉辦，會分為Public Leaderboard, Private Leaderboard，分別對應不同的Testing dataset subset，在競賽截止時間到之前，所有上傳的結果只會顯示Public的分數，每組再挑選三個model做為最終的預測結果，所以挑選robust model也算競賽的策略之一，常常看到很多原本在public分數很高的，在最終的private榜上performance卻降低不少(就是我們QQ)，當然也有進步超多那種，一部份當然是運氣成分，但也是利用這個機制防止overfitting或過度fine-tune的情況，所謂<b>真金不怕火煉</b>，generalizability高的model不管在public還是private都可以保有同樣的競爭力。</p>
+<p>這堂課總共有四次competition，分別為:</p>
+<ol>
+<li>Predicting News Popularity</li>
+<li>Object Detection</li>
+<li>Reverse Image Caption</li>
+<li>Unlearnable Datasets</li>
+</ol>
+<p>內容就不細講了，我覺得都滿有趣的，雖然我們表現普普，但我是真的學到滿多東西的，包含model的選擇、fine-tune的小技巧、跳脫框架的思維等，每次競賽完都會有前三名組別的Demo，其實他們做的和我們大致上都差不多，就是差了一點巧思，由衷地佩服大佬們。總之，Competition是這堂課我滿喜歡的一個部分，需要花很多時間才可以得到收穫，不過我覺得助教可以多要求實驗報告的部分，我覺得雖然已經要求寫報告，但分數不會有太多的波動(分數還是以競賽名次為主)，那也間接少了精進報告的誘因。</p>
+<h3 id="考試"><a href="#考試" class="headerlink" title="考試"></a>考試</h3><p>這堂課固定都會有一次的<b>期初測驗</b>，分數至少要達到70分或是在全部人之中的前70%才可以修這堂課程，考試的內容大概就是線性代數、微積分、基礎ML知識，考試前老師會釋出基礎課程的影片，我認為把影片看過並推導過一些數學公式，再寫過考古題的話，整體難度不會太高，我看大部分人也都考得不錯，這個考試大概是要過濾掉一些誤闖的阿貓阿狗吧，有準備不用太擔心，但這個考試也會算在總成績中，還是要好好讀書!</p>
+<p>至於這學期多加的一次<b>期中考</b>，範圍是真的滿多的，平常沒有在跟影片或上課，到時候抱佛腳會超痛苦。不過考試倒是出乎我意料的簡單，整份考卷只有一題數學推導題，而且還是幾乎必考的題目(back propagation)，其他題目多是論述題，寫下來難度不高而且還有10分的加分題，平常心準備的話應該就有不錯的成績(或是開學不要投期中考的選項XD)</p>
+<h3 id="課程"><a href="#課程" class="headerlink" title="課程"></a>課程</h3><p>這部分我留到最後講，因為說實在的我有滿多意見的… 老師在學期初就要烙狠話說這堂課程loading很重，考慮好再修課，我個人是比較無感，因為上學期在交大修的ML老師也喜歡這樣說，但我認知中的loading重比較像是課程內容難度很艱深，你需要花很多時間額外找資料、複習，才能真正融會貫通，如果你天資聰穎是可以花比較少時間的，但這堂DL的loading重比較像是事情很多的重，撇除課程難度不講，每個禮拜需要花一堆時間去看他的預錄影片、寫一份Lab作業、後面幾乎兩三週一次的Competition，加上他的上課模式又是那種點到為止的講課，所以要紮實學習一定要看預錄影片，影片常常都是2~4小時起跳，每週都在被DL很多事情追著跑的感覺，我個人不太喜歡這種只是單純增加你很多的義務，讓課程感覺是個負擔，相比交大的ML則是老師教得很艱深，很多數學推導需要回家複習，我也得花時間找資料跟上進度，但我上起來的感覺就是覺得很紮實，學習到很多東西，比較像是甜蜜的負擔。</p>
+<p>另外一點我比較不喜歡的是剛剛提到的上課模式，老師基本上利用兩堂的時間把PPT快速過一次，值得講的地方會停下來講一點，預錄影片才是整個課程學到最多東西的部分，我自己沒看完影片上課是聽得懂但沒有真正吸收，而看完影片再上課的話，老師的講解的確有畫龍點睛的功效，能讓我收穫不少，但因為只有兩堂課的時間，老師講課超快，又很喜歡拖延下課時間，常常讓我meeting遲到，影片4、5小時的內容塞在不到兩小時的時間裡，週四的一堂實驗課助教幾乎都只講個十分鐘就下課了，為什麼不要把實驗課也拿來上課呢，讓上課節奏與時長更恰當，實驗課可以另外改到晚上或是線上，我有寫到教學意見裡了，但我覺得不太可能改動這樣的模式了QQ</p>
+<h3 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h3><p>上面抱怨了一大段XD，這堂課程以內容面來說我很喜歡，不管是老師影片的講解，或是助教的notebook說明，我都覺得很仔細很用心，也讓我學習收穫匪淺，而上課模式與課程時間安排，還有過多的小作業是讓我比較詬病的地方，但總體來說這堂課還是很推薦大家去上，適合剛踏入AI領域的碩一們!</p>
+<h2 id="網路科學"><a href="#網路科學" class="headerlink" title="網路科學"></a>網路科學</h2><p>這堂是由通訊所的<a target="_blank" rel="noopener" href="https://www.ee.nthu.edu.tw/~cschang/">張正尚</a>老師所開設，聽其他同學說老師好像是這領域很猛的大佬，雖然我不是做網路的，但第一堂上完覺得課程內容滿有趣的，老師上課方式和節奏我覺得還算可以，一學期上完，整體來說我很喜歡這堂課程!</p>
+<p>甜:★★★☆☆<br>涼:★★☆☆☆<br>補:★★★★★</p>
+<p>修課成績排名: 15&#x2F;25</p>
+<h3 id="課程-1"><a href="#課程-1" class="headerlink" title="課程"></a>課程</h3><p>課程內容就是在講網路相關的知識，從基本的名詞解釋再到很複雜的Random graph, Preferential attachment, Percolation等，我自己不是網路背景的，說實在前面很簡單，但後面很多機率、微積分、線代等數學一連串砸上來非常吃不消，加上我算是一個人修這堂課，沒有朋友一起讀書討論或是考古資源，最後也反應在成績上了QQ</p>
+<p>再來講講老師的上課方式，前1&#x2F;3學期因為疫情關係所以線上上課，線上滿容易分心的，後面改回實體我覺得就好很多，因為修課人數不多，老師很喜歡和同學互動，加上我都是坐第一排，常常被老師虧，後面每堂課我幾乎都滿專注上課的，老師的講課滿紮實的，數學都會推導過並確定大家有聽懂，也會補充很多相關內容，像是最近conference的相關研究、時事與網路科學的結合，讓我們知道其實很多生活上實際會碰到的事情其實也可以用網路科學的角度去進行分析，像是最近幾年疫情和疫苗施打，其實可以透過很嚴謹的數學去分析，這也是我最喜歡這堂課的一點，不是只有死板板的數學公式推導，而是如何實際應用在實務上!</p>
+<h3 id="作業-amp-Project"><a href="#作業-amp-Project" class="headerlink" title="作業 &amp; Project"></a>作業 &amp; Project</h3><p>這堂課總共有<b>三次作業</b>加上一個<b>期末專題</b>，作業的部分都是和上課內容有關，包含觀念題、數學推導題、程式題，整體而言都滿簡單的，把上課講義看過一次就能寫出來了，程式題也是簡單的call一些API就解決，比較麻煩的是助教要求要用LaTeX，我以前沒用過寫起來就比較沒這麼順手些，後面用習慣就還好~</p>
+<p>期末Project的部分是作疫情下施打疫苗的分析，利用不同的centrality measure並對不同比例的人施打疫苗，對最終的感染情況進行實驗與分析，題目本身是滿有趣的，但實際下去寫後好像覺得有點沒難度，沒有太多地方需要思考，助教也有給了一份幾乎step-by-step的教學，而專題也有用到前幾次作業寫好的code，整題而言難度也不高。</p>
+<blockquote>
+<p>作業和期末專題基本上有達到題目要求就很好拿分，好好寫這會是拉分的一大助力</p>
+</blockquote>
+<h3 id="考試-1"><a href="#考試-1" class="headerlink" title="考試"></a>考試</h3><p>整學期總共有兩次考試，考試的範圍我覺得有點大，準備起來不太好準備，數學式子很多、內容又爆多。期中考幾乎都是數學推導題，比較少論述題，所以底子好的人會比較輕鬆，不能帶筆記也鮮少提供公式，有時候忘記一個小式子整題就去了QQ，加上沒有考古題的方向可以準備，期中考我考的不是太理想，但聽說平均好像60而已，多方考慮下還是沒有退選這堂課。而期末考也是類似的題型，但可能考過一次，我比較有準備的方向，有稍微把分數拉起來一些~</p>
+<h3 id="小結-1"><a href="#小結-1" class="headerlink" title="小結"></a>小結</h3><p>作業和Project分數我幾乎拿滿，但考試成績不是很理想，所以也反應在成績排名上了，不過老師有微調一些分數的樣子。總之，這堂課我還是滿喜歡的，上課學習到的知識真的滿多的，不僅僅是網路科學相關，但過多的數學式讓我考試有點眼花了XD 如果本身是網路背景的很推薦這堂課程，可以收穫滿滿!</p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>這學期修下來綜合來說沒有大四下來的喜歡，不過也都是有收穫的課程，只是有點占據我太多時間，下學期可能傾向修一些比較涼的課，多花點時間在研究和自己想做的事情上面~</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BF%AE%E8%AA%B2/" rel="tag"># 修課</a>
+              <a href="/tags/%E5%BF%83%E5%BE%97/" rel="tag"># 心得</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/24/nctu-109-2/" rel="prev" title="109 Spring 交大修課心得【機器學習/圖形識別/無人機】">
+      <i class="fa fa-chevron-left"></i> 109 Spring 交大修課心得【機器學習/圖形識別/無人機】
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92"><span class="nav-number">2.</span> <span class="nav-text">深度學習</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lab"><span class="nav-number">2.1.</span> <span class="nav-text">Lab</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Competition"><span class="nav-number">2.2.</span> <span class="nav-text">Competition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%80%83%E8%A9%A6"><span class="nav-number">2.3.</span> <span class="nav-text">考試</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AA%B2%E7%A8%8B"><span class="nav-number">2.4.</span> <span class="nav-text">課程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%B5%90"><span class="nav-number">2.5.</span> <span class="nav-text">小結</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B6%B2%E8%B7%AF%E7%A7%91%E5%AD%B8"><span class="nav-number">3.</span> <span class="nav-text">網路科學</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AA%B2%E7%A8%8B-1"><span class="nav-number">3.1.</span> <span class="nav-text">課程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E6%A5%AD-amp-Project"><span class="nav-number">3.2.</span> <span class="nav-text">作業 &amp; Project</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%80%83%E8%A9%A6-1"><span class="nav-number">3.3.</span> <span class="nav-text">考試</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%B5%90-1"><span class="nav-number">3.4.</span> <span class="nav-text">小結</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">4.</span> <span class="nav-text">總結</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kevin Cheng"
+      src="/images/pfp.jpg">
+  <p class="site-author-name" itemprop="name">Kevin Cheng</p>
+  <div class="site-description" itemprop="description">你有多自律，就有多自由</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100006869535711" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100006869535711" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/chengxche/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;chengxche&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/cheng-che-cheng-645055232/" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;cheng-che-cheng-645055232&#x2F;" rel="noopener" target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/chengche6230" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chengche6230" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:chengche6230@gmail.com" title="E-Mail → mailto:chengche6230@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kevin Cheng</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">16k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">15 分鐘</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
