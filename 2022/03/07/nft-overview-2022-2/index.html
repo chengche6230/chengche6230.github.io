@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/guitar-large.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/guitar-large.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/guiar-small.png">
+  <link rel="mask-icon" href="/images/guitar-solid.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="最近NFT進入一個寒冬般的熊市，在網路上看到一句挺不錯的話分享給大家  別顧著拉車，卻忘了抬頭看路  前言踏進NFT圈大概一個多月，寒假閒閒沒事做誤打誤撞就闖進了NFT圈，不管是不是幣圈人，大家或多或少都聽過很多NFT的消息，不外乎都是割韭菜、資金盤、龐氏等負面消息，或是某某知名網紅、藝人發布NFT收割粉絲錢… 但，與其道聽塗說，我認為百聞不如一見，就把一小部分的閒置資產投入NFT圈實際操作看看，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="淺談NFT近況: Azuki的紅豆傳奇">
+<meta property="og:url" content="http://example.com/2022/03/07/nft-overview-2022-2/index.html">
+<meta property="og:site_name" content="大哲的碼農生活">
+<meta property="og:description" content="最近NFT進入一個寒冬般的熊市，在網路上看到一句挺不錯的話分享給大家  別顧著拉車，卻忘了抬頭看路  前言踏進NFT圈大概一個多月，寒假閒閒沒事做誤打誤撞就闖進了NFT圈，不管是不是幣圈人，大家或多或少都聽過很多NFT的消息，不外乎都是割韭菜、資金盤、龐氏等負面消息，或是某某知名網紅、藝人發布NFT收割粉絲錢… 但，與其道聽塗說，我認為百聞不如一見，就把一小部分的閒置資產投入NFT圈實際操作看看，">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://example.com/2022/03/07/nft-overview-2022-2/os-daily-volume.jpg">
+<meta property="og:image" content="http://example.com/2022/03/07/nft-overview-2022-2/azuki-1.jpg">
+<meta property="og:image" content="http://example.com/2022/03/07/nft-overview-2022-2/azuki-fp.jpg">
+<meta property="og:image" content="http://example.com/2022/03/07/nft-overview-2022-2/bobu.png">
+<meta property="og:image" content="http://example.com/2022/03/07/nft-overview-2022-2/bobu-2.jpg">
+<meta property="article:published_time" content="2022-03-07T08:19:50.000Z">
+<meta property="article:modified_time" content="2022-03-07T13:17:28.117Z">
+<meta property="article:author" content="Kevin Cheng">
+<meta property="article:tag" content="投資">
+<meta property="article:tag" content="加密貨幣">
+<meta property="article:tag" content="NFT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/03/07/nft-overview-2022-2/os-daily-volume.jpg">
+
+<link rel="canonical" href="http://example.com/2022/03/07/nft-overview-2022-2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>淺談NFT近況: Azuki的紅豆傳奇 | 大哲的碼農生活</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">大哲的碼農生活</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/07/nft-overview-2022-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pfp.jpg">
+      <meta itemprop="name" content="Kevin Cheng">
+      <meta itemprop="description" content="你有多自律，就有多自由">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大哲的碼農生活">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          淺談NFT近況: Azuki的紅豆傳奇
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2022-03-07 16:19:50 / 修改時間：21:17:28" itemprop="dateCreated datePublished" datetime="2022-03-07T16:19:50+08:00">2022-03-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B9%A3%E5%9C%88%E5%A4%A7%E5%B0%8F%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">幣圈大小事</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>3.5k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>3 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>最近NFT進入一個寒冬般的熊市，在網路上看到一句挺不錯的話分享給大家</p>
+<blockquote>
+<p>別顧著拉車，卻忘了抬頭看路</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>踏進NFT圈大概一個多月，寒假閒閒沒事做誤打誤撞就闖進了NFT圈，不管是不是幣圈人，大家或多或少都聽過很多NFT的消息，不外乎都是割韭菜、資金盤、龐氏等負面消息，或是某某知名網紅、藝人發布NFT收割粉絲錢… 但，與其道聽塗說，我認為<b>百聞不如一見</b>，就把一小部分的閒置資產投入NFT圈實際操作看看，這一個多月以來被各種資訊轟炸，也漸漸對於NFT有一個雛形，趁著現在熊市多學多看少操作，稍微整理一下自己的思緒，好好布局並等待春天的到來。</p>
+<span id="more"></span>
+
+<p><i>*這篇文章主要是想法與心得分享，不構成任何投資建議，也不會講太Hardcore的技術面</i></p>
+<p>扣除一些大鯨魚或是財富自由的富人，我相信多數進入幣圈甚至是NFT圈的人都是想要投資(投機)賺錢，我也是抱持著這樣的心態進入的，但NFT真的可以賺到錢嗎?這個問題答案是絕對可以，不過投資就是一個<b>零和賽局</b>，有人賺錢就有人賠錢。另外，NFT乃至於整個幣圈其實是一個<b>利基市場</b>，因為資訊的不對稱，所以在相同程度的風險下，是可以獲得比傳統金融商品更高的報酬(但其實承擔幣價的波動，某種程度而言就是相對大的風險了)。</p>
+<p>NFT我認為是一項新穎且重要的技術，但目前的圈子真的挺亂的，絕大部分的項目都會趨近於歸零，只是時間長短的問題，所以還是要做好風險評估和資產分配，不要隨便FOMO就All-in，幣圈是風險相對高的投資項目，平常發票都不會中的你，怎麼會覺得自己隨便投就可以財富自由了呢? 建議還是不要分配過多的資產在高風險標的裡。</p>
+<h2 id="市場近況"><a href="#市場近況" class="headerlink" title="市場近況"></a>市場近況</h2><p>自從<a target="_blank" rel="noopener" href="https://opensea.io/collection/clonex">Clone X</a>和村上隆合作，並被NIKE收購後，整個NFT圈迎來了將近兩個月的大牛市，各種項目遍地開花，資金不斷湧入NFT市場，交易熱絡，項目十倍爆擊時有所聞，然而進入二月後，市場交易量逐漸下降，沒有利多消息，反而接踵而來的是各種詐騙項目的利空，二月底<a target="_blank" rel="noopener" href="https://opensea.io/collection/pixelmongen1">Pixelmon</a>的<a target="_blank" rel="noopener" href="https://opensea.io/assets/0x32973908faee0bf825a343000fe412ebe56f802a/4924">Kevin</a>事件，19歲的少年<b>海撈超過7000萬美金</b>，更是重重的打擊市場信心，交易量下滑，加上烏俄戰爭導致幣價上漲，資金大量流出NFT圈，3&#x2F;8單日在Opensea上的交易量接近5千萬美金，突破12月初以來的新低(2&#x2F;1牛市最高點單日交易量約為2億5千萬美金)，而交易買家數量也從二月的五萬多人下降至三萬人。近期10個項目9個破發(二級市場地板價低於發行價格)，這種亂象其實不是我們想看到的，也對NFT這項技術的發展增加很多阻力…</p>
+<figure>
+    <img src="os-daily-volume.jpg" height="100%" width="100%">
+    <center><figcaption><i>圖一、Opensea Daily Volume (Ethereum) from Dune</i></figcaption></center>
+</figure>
+
+<h2 id="Azuki掀起的日漫風格"><a href="#Azuki掀起的日漫風格" class="headerlink" title="Azuki掀起的日漫風格"></a>Azuki掀起的日漫風格</h2><p>相信大家一定聽過<a target="_blank" rel="noopener" href="https://opensea.io/collection/cryptopunks">CryptoPunks</a>或是<a target="_blank" rel="noopener" href="https://opensea.io/collection/boredapeyachtclub">無聊猿</a>(Bored Ape Yacht Club)，這些項目在2021上半年誕生，也讓多數人開始把目光投向NFT圈。然而到了一月，<a target="_blank" rel="noopener" href="https://opensea.io/collection/azuki">Azuki</a>的出現為整個NFT圈刮起一陣日漫風(應該可以說是颱風了)。</p>
+<figure>
+    <img src="azuki-1.jpg" height="80%" width="80%" style="margin:auto;">
+    <center><figcaption><i>圖二、Azuki</i></figcaption></center>
+</figure>
+
+<h3 id="秒殺的荷蘭式拍賣"><a href="#秒殺的荷蘭式拍賣" class="headerlink" title="秒殺的荷蘭式拍賣"></a>秒殺的荷蘭式拍賣</h3><p>Azuki於一月中發行，市場上罕見的二次元日系風格，加上使用了獨特的荷拍公售，讓Azuki在極短的時間內就sold out，姑且不論較為主觀的美術風格，先來談談他們的銷售方式，Azuki整個銷售過程分為三個階段:</p>
+<ul>
+<li>第一階段: 8,800個NFT進行荷蘭式拍賣，起標價 <code>1 eth</code>，每過20分鐘下降<code>0.05 eth</code> 直到<code>0.15 eth</code></li>
+<li>第二階段: 1,200個NFT由白名單鑄造(荷拍價格一半)</li>
+<li>第三階段: 若一二階段未售完則進行公開發售</li>
+</ul>
+<p>事實上，第一階段荷拍5分鐘就搶購一空，項目方3千萬美元到手，堪稱目前為止最成功的銷售案例，接下來講講其中最重要的<b>荷蘭式拍賣</b>: 比起過去較常見的定價公售，荷拍是一種共識決的銷售手法，由項目方訂定一個高價，隔一段時間下降一些，直到全數賣完或降到底價。套用一些賽局的想法，如果所有的買家都有共識且消息互通，可以等降到底價後再進場購入，不僅讓持有成本降低，也讓項目方賺不太到錢，過去也有一些項目方使用荷拍方式進行銷售，但價錢下降的時間間隔過長，導致發售當下的FOMO氛圍被消磨，NFT賣不出去也就宣告了項目的死亡，然而，Azuki吸取了這部分的經驗，將時間間隔縮短，並營造FOMO氣氛，公開且認真做事的團隊、獨特的日漫畫風、龐大的社區粉絲，Azuki集結了所有成功的因素，原本可以透過共識拉低購買價格的荷拍，在天時地利人和的情況下，讓Azuki實際上是搶著買，想買都買不到。</p>
+<p>也許花將近2500美元買一張圖片看似瘋狂，但一個成功且有規劃的團隊是能讓NFT的價值不斷提升，截至目前為止地板價平均已經來到了<code>10 eth</code>，當初搶到荷拍的買家已經獲利十倍，我認為Azuki長期來看只會持續上漲。</p>
+<figure>
+    <img src="azuki-fp.jpg" height="80%" width="80%" style="margin:auto;">
+    <center><figcaption><i>圖三、3/7 Azuki現況</i></figcaption></center>
+</figure>
+
+<h3 id="蹭流量的仿盤"><a href="#蹭流量的仿盤" class="headerlink" title="蹭流量的仿盤"></a>蹭流量的仿盤</h3><p>在Azuki問世後，大量的日漫風格NFT與仿盤如雨後春筍般冒出，像是SoulZ、Sekira、黃豆、小紅豆…等不勝枚舉，也有很多項目想要模仿Azuki的成功模式-荷拍，結果都是失敗收場，價格一直跌甚至賣不出去，最近熊市也是一個原因，但最根本的還是回歸基本面，<b>團隊方的規畫與實踐</b>我認為才是一個NFT項目走得長遠與否的關鍵，也是成為藍籌項目的評判標準。</p>
+<h3 id="NFT碎片化-Bobu"><a href="#NFT碎片化-Bobu" class="headerlink" title="NFT碎片化 - Bobu"></a>NFT碎片化 - Bobu</h3><p>接下來說的是昨天(3&#x2F;6)發生的事，也是促使我寫這篇文章的一大推手–<b>NFT碎片化</b>。我真的很佩服也很喜歡Azuki這個項目(希望有朝一日我可以買一張哈哈)，現在市場上充斥著很多soft rug的項目，也就是賣完NFT後不履行當初規劃的roadmap，沒有持續的凝聚社區共識，導致項目慢慢走向歸零之路，但Azuki的團隊相反，即便取得了巨大的成功(與以太幣)，仍然持續投入開發與實驗，昨天發售的<a target="_blank" rel="noopener" href="https://opensea.io/collection/bobutoken">Bobu</a>就是一個很好的例子。</p>
+<p>NFT的碎片化是指在不影響原有項目價值的情況下，用治理代幣的方式真正的實現DAO(Decentralized Antonomous Organization)，這個做法也還在實驗中，具體是否成功不確定，但還是要給予勇於嘗試的團隊respect。過去常見的DAO是透過持有一個或多個NFT，進而在固定時間獲取治理代幣進行決策投票或是抽獎，而Azuki他們具體的作法是將<a target="_blank" rel="noopener" href="https://opensea.io/assets/0xed5af388653567af2f388e6224dc7c4b3241c544/40">Azuki#40</a>(命名為Bobu)放進團隊方的金庫不做任何交易與操作，將這一個NFT切割成50,000個碎片，持有Bobu代幣的人可以對提議重大決策與表決，以及未來項目的開發權，雖然團隊方聲稱擁有代幣並不表示擁有Azuki#40的所有權，但可以使用這個Bobu當成PFP(雖然我下載下來也可以用，但…你懂的，這裡是NFT的世界)，並且不斷強調這還是實驗階段，不保證任何的投資利益。</p>
+<figure>
+    <img src="bobu.png" height="55%" width="55%" style="margin:auto;">
+    <center><figcaption><i>圖四、Azuki#40 Bobu</i></figcaption></center>
+</figure>
+
+<p>Bobu是基於ERC-1155協議上，這種協議可以同時存在同質化代幣以及非同質化代幣兩種特性，也就是同一個NFT可以被鑄造多次並交易，礙於篇幅不多加贅述。團隊方規劃Bobu token將會發放5萬個，昨天以<code>0.01 eth</code>的價格公開發售2萬個，剩下3萬個留給Azuki持有者及未來規劃，想當然地，Bobu也是在一小時內搶購一空，0.01的確滿便宜的，但這種FOMO搶購讓當時的gas fee來到<code>500 Gwei</code>，約等同於<code>0.06 eth</code>，造成一種交易費比Bobu本身還要貴的情況哈哈，目前地板價也來到<code>0.1 eth</code>左右(畢竟持有成本大概是0.06~0.08)。</p>
+<h3 id="個人看法"><a href="#個人看法" class="headerlink" title="個人看法"></a>個人看法</h3><p>說說我的看法，發行的前後一小時左右，很多Alpha社群瘋狂討論，FOMO情緒非常高(尤其是在低迷的熊市裡頭)，我想大概是讓很多買不起Azuki的人可以參與這個項目吧哈哈，不過仔細思考背後的原因，團隊方除了現賺<code>200 eth</code>外，更重要的是在這個熊市中佈局自己的社群，前面提到的交易量及交易者數量銳減，那現階段最重要的是要把人留住而且不斷吸收新人加入，讓社群壯大，有人流就有金流，擁有Bobu token的人可以在Azuki Discord社群中擁有特別的權限，具體能夠得到甚麼我覺得不重要，很多人都是一股腦兒的衝進去了。</p>
+<p>我相信NFT碎片化一定是某種層面上的技術改革，但目前Bobu比較像是個噱頭，主要還是要讓這個項目的社群力量越來越強大，真的很佩服這個團隊在做的事情與嘗試，若是Bobu能夠帶來正面迴響與成功的話，估計也會有幾個NFT被丟進金庫裡了哈哈。</p>
+<img src="bobu-2.jpg" height="80%" width="80%" style="margin:auto;">
+
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>在這個熊市低迷的氣氛下，Azuki透過NFT碎片化的方式硬是打破寂靜，一個治理代幣的當日交易量就來到<code>500 eth</code>，不僅讓他們團隊獲得利益，也讓我們見識到真正的藍籌項目是可以在熊市中抗漲，甚至帶來意想不到的效果。不過小韭菜們還是先多學多看呀，熊市少操作或是謹慎佈局淺力項目，等待牛市的爆發!</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://opensea.io/">Opensea</a></li>
+<li><a target="_blank" rel="noopener" href="https://dune.xyz/home">Dune</a></li>
+<li><a target="_blank" rel="noopener" href="https://twitter.com/AzukiZen">Azuki twitter</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8A%95%E8%B3%87/" rel="tag"># 投資</a>
+              <a href="/tags/%E5%8A%A0%E5%AF%86%E8%B2%A8%E5%B9%A3/" rel="tag"># 加密貨幣</a>
+              <a href="/tags/NFT/" rel="tag"># NFT</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/28/nthu-110-1-course/" rel="prev" title="110 Fall 清大修課心得【深度學習/網路科學】">
+      <i class="fa fa-chevron-left"></i> 110 Fall 清大修課心得【深度學習/網路科學】
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%82%E5%A0%B4%E8%BF%91%E6%B3%81"><span class="nav-number">2.</span> <span class="nav-text">市場近況</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Azuki%E6%8E%80%E8%B5%B7%E7%9A%84%E6%97%A5%E6%BC%AB%E9%A2%A8%E6%A0%BC"><span class="nav-number">3.</span> <span class="nav-text">Azuki掀起的日漫風格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%92%E6%AE%BA%E7%9A%84%E8%8D%B7%E8%98%AD%E5%BC%8F%E6%8B%8D%E8%B3%A3"><span class="nav-number">3.1.</span> <span class="nav-text">秒殺的荷蘭式拍賣</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B9%AD%E6%B5%81%E9%87%8F%E7%9A%84%E4%BB%BF%E7%9B%A4"><span class="nav-number">3.2.</span> <span class="nav-text">蹭流量的仿盤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NFT%E7%A2%8E%E7%89%87%E5%8C%96-Bobu"><span class="nav-number">3.3.</span> <span class="nav-text">NFT碎片化 - Bobu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%8B%E4%BA%BA%E7%9C%8B%E6%B3%95"><span class="nav-number">3.4.</span> <span class="nav-text">個人看法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">4.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kevin Cheng"
+      src="/images/pfp.jpg">
+  <p class="site-author-name" itemprop="name">Kevin Cheng</p>
+  <div class="site-description" itemprop="description">你有多自律，就有多自由</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100006869535711" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100006869535711" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/chengxche/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;chengxche&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/cheng-che-cheng-645055232/" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;cheng-che-cheng-645055232&#x2F;" rel="noopener" target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/chengche6230" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chengche6230" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:chengche6230@gmail.com" title="E-Mail → mailto:chengche6230@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kevin Cheng</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">20k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">18 分鐘</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
