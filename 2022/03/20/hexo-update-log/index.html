@@ -28,7 +28,7 @@
 <meta property="og:description" content="架設部落格站也差不多一個多月了，hexo雖然很方便，但還是需要自己調整很多設定才可以達到理想中的效果，NexT主題也有提供大部分版面配置與效果，寫這篇文章把一些個人化的修改紀錄起來，方便未來去作底層的修改，也分享給大家~">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-03-20T08:20:45.000Z">
-<meta property="article:modified_time" content="2022-03-20T11:29:35.385Z">
+<meta property="article:modified_time" content="2022-03-20T11:55:37.807Z">
 <meta property="article:author" content="Kevin Cheng">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
@@ -191,7 +191,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2022-03-20 16:20:45 / 修改時間：19:29:35" itemprop="dateCreated datePublished" datetime="2022-03-20T16:20:45+08:00">2022-03-20</time>
+              <time title="創建時間：2022-03-20 16:20:45 / 修改時間：19:55:37" itemprop="dateCreated datePublished" datetime="2022-03-20T16:20:45+08:00">2022-03-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -268,9 +268,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mouse click effect: fireworks | love</span></span><br><span class="line">cursor_effect: fireworks</span><br></pre></td></tr></table></figure>
 
 <p>最後需要重新產生動態文件 <code>hexo g</code>，在開啟localhost或是部署到github上。</p>
+<h2 id="Gitalk-留言板"><a href="#Gitalk-留言板" class="headerlink" title="Gitalk 留言板"></a>Gitalk 留言板</h2><p><i>待更</i></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://lamirs.vercel.app/hexo-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8emoji/">hexo - 配置使用 emoji</a></li>
 <li><a target="_blank" rel="noopener" href="https://tding.top/archives/58cff12b.html">Hexo-NexT 添加打字特效、鼠标点击特效</a></li>
+<li><a target="_blank" rel="noopener" href="https://israynotarray.com/hexo/20191206/2397475810/">十分鐘超詳細替 Hexo Next 開啟 Gitalk 留言版</a></li>
 </ul>
 
     </div>
@@ -371,7 +373,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.</span> <span class="nav-text">hexo _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">NexT _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%B6%B2%E7%AB%99%E4%B8%AD%E4%BD%BF%E7%94%A8Emoji%F0%9F%98%8E"><span class="nav-number">3.</span> <span class="nav-text">在網站中使用Emoji😎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BB%91%E9%BC%A0%E9%BB%9E%E6%93%8A%E7%89%B9%E6%95%88"><span class="nav-number">4.</span> <span class="nav-text">滑鼠點擊特效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.</span> <span class="nav-text">hexo _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">NexT _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%B6%B2%E7%AB%99%E4%B8%AD%E4%BD%BF%E7%94%A8Emoji%F0%9F%98%8E"><span class="nav-number">3.</span> <span class="nav-text">在網站中使用Emoji😎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BB%91%E9%BC%A0%E9%BB%9E%E6%93%8A%E7%89%B9%E6%95%88"><span class="nav-number">4.</span> <span class="nav-text">滑鼠點擊特效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gitalk-%E7%95%99%E8%A8%80%E6%9D%BF"><span class="nav-number">5.</span> <span class="nav-text">Gitalk 留言板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
