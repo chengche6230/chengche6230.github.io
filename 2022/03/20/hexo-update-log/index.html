@@ -28,7 +28,7 @@
 <meta property="og:description" content="架設部落格站也差不多一個多月了，hexo雖然很方便，但還是需要自己調整很多設定才可以達到理想中的效果，NexT主題也有提供大部分版面配置與效果，寫這篇文章把一些個人化的修改紀錄起來，方便未來去作底層的修改，也分享給大家~">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-03-20T08:20:45.000Z">
-<meta property="article:modified_time" content="2022-03-20T09:53:19.659Z">
+<meta property="article:modified_time" content="2022-03-20T11:29:35.385Z">
 <meta property="article:author" content="Kevin Cheng">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
@@ -191,7 +191,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2022-03-20 16:20:45 / 修改時間：17:53:19" itemprop="dateCreated datePublished" datetime="2022-03-20T16:20:45+08:00">2022-03-20</time>
+              <time title="創建時間：2022-03-20 16:20:45 / 修改時間：19:29:35" itemprop="dateCreated datePublished" datetime="2022-03-20T16:20:45+08:00">2022-03-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -216,14 +216,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>1.5k</span>
+              <span>2.5k</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              <span>1 分鐘</span>
+              <span>2 分鐘</span>
             </span>
 
         </div>
@@ -252,8 +252,25 @@
 <p>修改hexo目錄底下的<code>_config.yml</code>檔，在文件最後面加上</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hexo-filter-emoji</span></span><br><span class="line">emoji:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  className: github-emoji</span><br><span class="line">  styles:</span><br><span class="line">  customEmojis:</span><br></pre></td></tr></table></figure>
 <p>儲存後就可以使用自己喜歡的emoji啦🎉，直接複製想要打的表情，貼到文章內就可以了!如果是Windows的使用者，可以透過快捷鍵 <code>win + &gt;</code> 打開windows內建的表情符號對話窗，選擇想要的符號按下去就會自動輸入了，我覺得這個表情包就夠豐富了，甚至人臉的符號還可以選擇膚色👩👨🏻🧑🏼👧🏽👦🏾🧒🏿，另外也有顏文字和數學符號可以選，滿方便的，大家用起來!</p>
-<h2 id="滑鼠特效"><a href="#滑鼠特效" class="headerlink" title="滑鼠特效"></a>滑鼠特效</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<h2 id="滑鼠點擊特效"><a href="#滑鼠點擊特效" class="headerlink" title="滑鼠點擊特效"></a>滑鼠點擊特效</h2><p>在 <code>themes\next\source\js\</code> 底下新增 <code>cursor</code> 資料夾，並將想要的滑鼠特效js檔丟進cursor資料夾內。</p>
+<p>參考特效腳本:</p>
+<ul>
+<li><a href="/js/cursor/fireworks.js">煙火特效</a></li>
+<li><a href="/js/cursor/love.js">愛心特效</a></li>
+</ul>
+<p>在 <code>themes\next\layout\</code> 中新增 <code>_custom</code> 資料夾，並新增 <code>custom.swig</code> 檔，有幾份腳本就寫對應的code:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="comment"># 鼠标点击特效 #&#125;</span></span><br><span class="line">&#123;% <span class="keyword">if</span> theme.cursor_effect == <span class="string">&quot;fireworks&quot;</span> %&#125;</span><br><span class="line">  &lt;script async src=<span class="string">&quot;/js/cursor/fireworks.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&#123;% elseif theme.cursor_effect == <span class="string">&quot;love&quot;</span> %&#125;</span><br><span class="line">  &lt;script async src=<span class="string">&quot;/js/cursor/love.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然後在 <code>themes\next\layout\_layout.swig</code> 檔案最底下新增:</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  &#123;% include &#x27;_third-party/math/index.swig&#x27; %&#125;</span><br><span class="line">  &#123;% include &#x27;_third-party/quicklink.swig&#x27; %&#125;</span><br><span class="line"></span><br><span class="line"><span class="addition">+ &#123;% include &#x27;_custom/custom.swig&#x27; %&#125;</span></span><br><span class="line"></span><br><span class="line">  &#123;&#123;- next_inject(&#x27;bodyEnd&#x27;) &#125;&#125;</span><br><span class="line">  &#123;%- if theme.pjax %&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &#123;%- endif %&#125;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>設定完成後，就可以在主題的配置文件 <code>_config.yml</code> 中添加設定我們想要切換的特效:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mouse click effect: fireworks | love</span></span><br><span class="line">cursor_effect: fireworks</span><br></pre></td></tr></table></figure>
+
+<p>最後需要重新產生動態文件 <code>hexo g</code>，在開啟localhost或是部署到github上。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://lamirs.vercel.app/hexo-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8emoji/">hexo - 配置使用 emoji</a></li>
+<li><a target="_blank" rel="noopener" href="https://tding.top/archives/58cff12b.html">Hexo-NexT 添加打字特效、鼠标点击特效</a></li>
 </ul>
 
     </div>
@@ -353,7 +370,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.</span> <span class="nav-text">hexo _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">NexT _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%B6%B2%E7%AB%99%E4%B8%AD%E4%BD%BF%E7%94%A8Emoji%F0%9F%98%8E"><span class="nav-number">3.</span> <span class="nav-text">在網站中使用Emoji😎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BB%91%E9%BC%A0%E7%89%B9%E6%95%88"><span class="nav-number">4.</span> <span class="nav-text">滑鼠特效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.</span> <span class="nav-text">hexo _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">NexT _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%B6%B2%E7%AB%99%E4%B8%AD%E4%BD%BF%E7%94%A8Emoji%F0%9F%98%8E"><span class="nav-number">3.</span> <span class="nav-text">在網站中使用Emoji😎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BB%91%E9%BC%A0%E9%BB%9E%E6%93%8A%E7%89%B9%E6%95%88"><span class="nav-number">4.</span> <span class="nav-text">滑鼠點擊特效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -435,12 +452,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="總字數">24k</span>
+    <span title="總字數">25k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">21 分鐘</span>
+    <span title="所需總閱讀時間">22 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
   </div>
@@ -518,8 +535,6 @@
 
 
   
-
-  <script async src="/js/cursor/fireworks.js"></script>
 
 </body>
 </html>
