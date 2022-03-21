@@ -28,7 +28,7 @@
 <meta property="og:description" content="架設部落格站也差不多一個多月了，hexo雖然很方便，但還是需要自己調整很多設定才可以達到理想中的效果，NexT主題也有提供大部分版面配置與效果，寫這篇文章把一些個人化的修改紀錄起來，方便未來去作底層的修改，也分享給大家~">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-03-20T08:20:45.000Z">
-<meta property="article:modified_time" content="2022-03-20T11:55:37.807Z">
+<meta property="article:modified_time" content="2022-03-21T09:12:26.118Z">
 <meta property="article:author" content="Kevin Cheng">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
@@ -189,10 +189,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2022-03-20 16:20:45 / 修改時間：19:55:37" itemprop="dateCreated datePublished" datetime="2022-03-20T16:20:45+08:00">2022-03-20</time>
+              <time title="創建時間：2022-03-20 16:20:45" itemprop="dateCreated datePublished" datetime="2022-03-20T16:20:45+08:00">2022-03-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-03-21 17:12:26" itemprop="dateModified" datetime="2022-03-21T17:12:26+08:00">2022-03-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -216,14 +222,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>2.5k</span>
+              <span>2.9k</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              <span>2 分鐘</span>
+              <span>3 分鐘</span>
             </span>
 
         </div>
@@ -242,9 +248,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">language: zh-TW <span class="comment"># 調整語系</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Extensions</span></span><br><span class="line">theme: next <span class="comment"># 調整自己想要使用的主題</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment # 修改部署上github的資訊</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git <span class="comment"># 透過git</span></span><br><span class="line">  repo: https://github.com/chengche6230/chengche6230.github.io.git <span class="comment"># 記得將username改成自己的</span></span><br><span class="line">  branch: main <span class="comment"># 選擇要部署的branch(通常是直接部署上main)</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="NexT-config-yml-中的設定"><a href="#NexT-config-yml-中的設定" class="headerlink" title="NexT _config.yml 中的設定"></a>NexT _config.yml 中的設定</h2><p>這是主題自己的config檔，位於hexo根目錄的<code>.\themes\next\_config.yml</code>。NexT強大的一點就是支援非常多的套件，都有寫在config檔裡面了，但基本上預設都是關閉，可以自己打開玩看看~</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">favicon: <span class="comment"># 修改網頁icon的地方，將圖片放到 \source\images 底下</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Schemes</span></span><br><span class="line">scheme: Mist <span class="comment"># NexT底下還有四種不同的風格&#123;Muse, Mist, Pisces, Gemini&#125;，可以根據喜好修改</span></span><br><span class="line"></span><br><span class="line">menu: <span class="comment"># 選擇要顯示哪些頁面，並使用甚麼icon</span></span><br><span class="line"></span><br><span class="line">sidebar:</span><br><span class="line">  position: left <span class="comment"># 修改sidebar的出現位置</span></span><br><span class="line">  display: always <span class="comment"># 修改sidebar的出現時機</span></span><br><span class="line"></span><br><span class="line">avatar: <span class="comment"># 修改大頭貼的照片和外框</span></span><br><span class="line"></span><br><span class="line">social: <span class="comment"># 修改社群帳號資料</span></span><br><span class="line"></span><br><span class="line">reward: <span class="comment"># 可以放收款QR code讓別人打賞</span></span><br><span class="line"></span><br><span class="line">busuanzi_count: <span class="comment"># 不蒜子插件(用來記錄造訪人數和觀看次數)，如網頁底下所示</span></span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  total_visitors: <span class="literal">true</span></span><br><span class="line">  total_visitors_icon: fa fa-user</span><br><span class="line">  total_views: <span class="literal">true</span></span><br><span class="line">  total_views_icon: fa fa-eye</span><br><span class="line">  post_views: <span class="literal">true</span></span><br><span class="line">  post_views_icon: fa fa-eye</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">favicon: <span class="comment"># 修改網頁icon的地方，將圖片放到 \source\images 底下</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Schemes</span></span><br><span class="line">scheme: Mist <span class="comment"># NexT底下還有四種不同的風格&#123;Muse, Mist, Pisces, Gemini&#125;，可以根據喜好修改</span></span><br><span class="line"></span><br><span class="line">menu: <span class="comment"># 選擇要顯示哪些頁面，並使用甚麼icon</span></span><br><span class="line"></span><br><span class="line">footer: <span class="comment"># 這區可以設定頁面底部的資訊，如:copyright, icon等</span></span><br><span class="line"></span><br><span class="line">sidebar:</span><br><span class="line">  position: left <span class="comment"># 修改sidebar的出現位置</span></span><br><span class="line">  display: always <span class="comment"># 修改sidebar的出現時機</span></span><br><span class="line"></span><br><span class="line">avatar: <span class="comment"># 修改大頭貼的照片和外框</span></span><br><span class="line"></span><br><span class="line">social: <span class="comment"># 修改社群帳號資料</span></span><br><span class="line"></span><br><span class="line">reward: <span class="comment"># 可以放收款QR code讓別人打賞</span></span><br><span class="line"></span><br><span class="line">busuanzi_count: <span class="comment"># 不蒜子插件(用來記錄造訪人數和觀看次數)，如網頁底下所示</span></span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  total_visitors: <span class="literal">true</span></span><br><span class="line">  total_visitors_icon: fa fa-user</span><br><span class="line">  total_views: <span class="literal">true</span></span><br><span class="line">  total_views_icon: fa fa-eye</span><br><span class="line">  post_views: <span class="literal">true</span></span><br><span class="line">  post_views_icon: fa fa-eye</span><br></pre></td></tr></table></figure>
 
 <p>若是要更改用字遣詞可以到NexT底下的 <code>.\languages\zh_TW.yml</code> 修改對應的中文字。</p>
+<h2 id="Page中front-matter設定"><a href="#Page中front-matter設定" class="headerlink" title="Page中front matter設定"></a>Page中front matter設定</h2><p>在頁面的md檔最上方有一塊—包起來的範圍，可以對文章或頁面設定一些基本的屬性。若是很常用的屬性可以到 <code>scaffolds\</code> 中對page或post等進行設定，設定完成後每一個新增的md檔就會照著格式預設產生。底下是一些我有用到的屬性:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">title: <span class="comment"># 文章標題或頁面名稱</span></span><br><span class="line"><span class="built_in">date</span>: <span class="comment"># 產生時間</span></span><br><span class="line">categories: <span class="comment"># 分類</span></span><br><span class="line">tags: <span class="comment"># 標籤，可以設定多個標籤，如: [&quot;投資&quot;, &quot;加密貨幣&quot;, &quot;NFT&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 需要再寫的屬性</span></span><br><span class="line">sticky: <span class="comment"># 數值，用來調整置頂文章順序</span></span><br><span class="line">comment: <span class="comment"># true | false 當前文章/頁面是否開啟留言板</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="在網站中使用Emoji😎"><a href="#在網站中使用Emoji😎" class="headerlink" title="在網站中使用Emoji😎"></a>在網站中使用Emoji😎</h2><p>用了Emoji讓整個頁面比較生動，在簡單風格的NexT主題下也多了一些色彩，但原本是沒辦法打出emoji的，透過簡單的設定就可以打出表情符號啦!</p>
 <p>安裝<code>hexo-filter-emoji</code>實現Emoji功能</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-filter-emoji</span><br></pre></td></tr></table></figure>
@@ -252,7 +261,7 @@
 <p>修改hexo目錄底下的<code>_config.yml</code>檔，在文件最後面加上</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hexo-filter-emoji</span></span><br><span class="line">emoji:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  className: github-emoji</span><br><span class="line">  styles:</span><br><span class="line">  customEmojis:</span><br></pre></td></tr></table></figure>
 <p>儲存後就可以使用自己喜歡的emoji啦🎉，直接複製想要打的表情，貼到文章內就可以了!如果是Windows的使用者，可以透過快捷鍵 <code>win + &gt;</code> 打開windows內建的表情符號對話窗，選擇想要的符號按下去就會自動輸入了，我覺得這個表情包就夠豐富了，甚至人臉的符號還可以選擇膚色👩👨🏻🧑🏼👧🏽👦🏾🧒🏿，另外也有顏文字和數學符號可以選，滿方便的，大家用起來!</p>
-<h2 id="滑鼠點擊特效"><a href="#滑鼠點擊特效" class="headerlink" title="滑鼠點擊特效"></a>滑鼠點擊特效</h2><p>在 <code>themes\next\source\js\</code> 底下新增 <code>cursor</code> 資料夾，並將想要的滑鼠特效js檔丟進cursor資料夾內。</p>
+<h2 id="滑鼠點擊特效"><a href="#滑鼠點擊特效" class="headerlink" title="滑鼠點擊特效"></a>滑鼠點擊特效</h2><p>讓滑鼠有各種特效，我個人還沒有看到喜歡的特效，目前頁面就沒有使用了<br>在 <code>themes\next\source\js\</code> 底下新增 <code>cursor</code> 資料夾，並將想要的滑鼠特效js檔丟進cursor資料夾內。</p>
 <p>參考特效腳本:</p>
 <ul>
 <li><a href="/js/cursor/fireworks.js">煙火特效</a></li>
@@ -373,7 +382,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.</span> <span class="nav-text">hexo _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">NexT _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%B6%B2%E7%AB%99%E4%B8%AD%E4%BD%BF%E7%94%A8Emoji%F0%9F%98%8E"><span class="nav-number">3.</span> <span class="nav-text">在網站中使用Emoji😎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BB%91%E9%BC%A0%E9%BB%9E%E6%93%8A%E7%89%B9%E6%95%88"><span class="nav-number">4.</span> <span class="nav-text">滑鼠點擊特效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gitalk-%E7%95%99%E8%A8%80%E6%9D%BF"><span class="nav-number">5.</span> <span class="nav-text">Gitalk 留言板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.</span> <span class="nav-text">hexo _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">NexT _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Page%E4%B8%ADfront-matter%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.</span> <span class="nav-text">Page中front matter設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%B6%B2%E7%AB%99%E4%B8%AD%E4%BD%BF%E7%94%A8Emoji%F0%9F%98%8E"><span class="nav-number">4.</span> <span class="nav-text">在網站中使用Emoji😎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BB%91%E9%BC%A0%E9%BB%9E%E6%93%8A%E7%89%B9%E6%95%88"><span class="nav-number">5.</span> <span class="nav-text">滑鼠點擊特效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gitalk-%E7%95%99%E8%A8%80%E6%9D%BF"><span class="nav-number">6.</span> <span class="nav-text">Gitalk 留言板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">7.</span> <span class="nav-text">Reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -460,9 +469,9 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">22 分鐘</span>
+    <span title="所需總閱讀時間">23 分鐘</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 驅動
   </div>
 
         
