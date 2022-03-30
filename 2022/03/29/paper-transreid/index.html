@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/guitar-color-64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/guitar-color-64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/guiar-color-48.png">
+  <link rel="mask-icon" href="/images/guitar-color.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="最近幾年Transformer的興起，不只讓NLP領域有重大的躍進，也讓這股風潮吹到的Vision這，作為一個電腦視覺的研究生，不能不知道ViT等相關研究吧。這篇2021年發表在ICCV上的paper，是由浙江大學與阿里巴巴團隊共同研究的論文，將Vision Transformer應用到行人重識別(Re-ID)的工作上，在不同benchmarks上都有達到sota的表現。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【論文賞析】TransReID: 基於Transformer的物件重識別模型">
+<meta property="og:url" content="http://example.com/2022/03/29/paper-transreid/index.html">
+<meta property="og:site_name" content="Che Blog">
+<meta property="og:description" content="最近幾年Transformer的興起，不只讓NLP領域有重大的躍進，也讓這股風潮吹到的Vision這，作為一個電腦視覺的研究生，不能不知道ViT等相關研究吧。這篇2021年發表在ICCV上的paper，是由浙江大學與阿里巴巴團隊共同研究的論文，將Vision Transformer應用到行人重識別(Re-ID)的工作上，在不同benchmarks上都有達到sota的表現。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://example.com/2022/03/29/paper-transreid/re-id-define.png">
+<meta property="og:image" content="http://example.com/2022/03/29/paper-transreid/2.jpg">
+<meta property="og:image" content="http://example.com/2022/03/29/paper-transreid/3.jpg">
+<meta property="og:image" content="http://example.com/2022/03/29/paper-transreid/model.jpg">
+<meta property="og:image" content="http://example.com/2022/03/29/paper-transreid/baseline.jpg">
+<meta property="og:image" content="http://example.com/2022/03/29/paper-transreid/sota.jpg">
+<meta property="article:published_time" content="2022-03-29T12:00:20.000Z">
+<meta property="article:modified_time" content="2022-03-30T10:08:02.719Z">
+<meta property="article:author" content="大哲">
+<meta property="article:tag" content="paper review">
+<meta property="article:tag" content="Transformer">
+<meta property="article:tag" content="Re-ID">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/03/29/paper-transreid/re-id-define.png">
+
+<link rel="canonical" href="http://example.com/2022/03/29/paper-transreid/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>【論文賞析】TransReID: 基於Transformer的物件重識別模型 | Che Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Che Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/29/paper-transreid/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pfp.jpg">
+      <meta itemprop="name" content="大哲">
+      <meta itemprop="description" content="你有多自律，就有多自由">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Che Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【論文賞析】TransReID: 基於Transformer的物件重識別模型
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-03-29 20:00:20" itemprop="dateCreated datePublished" datetime="2022-03-29T20:00:20+08:00">2022-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-03-30 18:08:02" itemprop="dateModified" datetime="2022-03-30T18:08:02+08:00">2022-03-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%F0%9F%94%A7-%E6%8A%80%E8%A1%93%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">🔧 技術分析</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>4.1k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>4 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>最近幾年<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1706.03762">Transformer</a>的興起，不只讓NLP領域有重大的躍進，也讓這股風潮吹到的Vision這，作為一個電腦視覺的研究生，不能不知道<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2010.11929">ViT</a>等相關研究吧。這篇2021年發表在ICCV上的paper，是由浙江大學與阿里巴巴團隊共同研究的論文，將Vision Transformer應用到行人重識別(Re-ID)的工作上，在不同benchmarks上都有達到sota的表現。</p>
+<span id="more"></span>
+<blockquote>
+<p>arxiv: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2102.04378">TransReID: Transformer-based Object Re-Identification</a></p>
+</blockquote>
+<p>這算是我的部落格中第一篇的論文賞析，可能會有很多先備知識需要補充，但礙於篇幅我會盡可能講解比較重要的部份，段落格式與詳盡程度我也正在拿捏當中，請大家見諒!</p>
+<p>在開始介紹之前，必須要先知道甚麼是<code>Re-identification</code> (行人重識別，簡稱Re-ID)，這個問題最主要就是要讓model學習出具有<b>代表性</b>與<b>差異性</b>的特徵，藉此分辨出不同的人物或物體(如:車輛)，而Re-ID如果加上時間維度的資訊就是 <code>Video-based Re-ID</code>，不過Re-ID問題的input都是預處理好的cropped bounding boxes，若是再加上偵測bbox.的部份(Detection)，就會是 <code>Multi-Target Multi-Camera Tracking</code> 問題(如圖一)，可想而知MTMC的研究會是最複雜也最難做的，同時包含了Detector、Tracking Algorithm、Re-ID Feature等部份，可說是牽一髮動全身，Re-ID則是先把變因去掉專注在學習人物特徵上，更詳細的介紹可以看底下的Reference，我覺得寫的很詳盡。</p>
+<figure>
+    <img src="re-id-define.png" width="70%" style="margin:auto;">
+    <center><figcaption><i>圖一、Re-ID問題定義</i></figcaption></center>
+</figure>
+
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>過去Re-ID問題在CNN-based的研究已經非常豐富，但使用CNN有兩個比較難被克服的問題，所以作者想要用Transformer-based的方法試圖解決這些問題。</p>
+<p>第一個問題是CNN的方法比較難以捕捉比較豐富且<b>具有結構性的特徵</b>，這樣講起來比較抽象一點，如圖二所示，我們可以看到單純CNN的方法對於特徵的捕捉比較弱，捕捉出來的pattern也比較零碎，加入attention機制的方法(c)可以稍微改善這個情況，但仍然不夠好，而基於Transformer的方法對於特徵的捕捉比較明確，整體來說特徵也比較有結構性，之所以可以有更好的特徵，是因為Transformer裡面的Multi-head self-attention讓model可以去注意圖片的不同區塊。</p>
+<figure>
+    <img src="2.jpg" width="80%" style="margin:auto;">
+    <center><figcaption><i>圖二、Visualization of attention maps: (a)Original images, (b)CNN-based methods, (c)CNN+attention methods, (d)Transformer-based methods</i></figcaption></center>
+</figure>
+
+<p>第二個問題是CNN的方法會讓細緻的特徵因為很多downsampling的操作(如:pooling、convolution等)而消失，這種細微的特徵對於Re-ID問題來說是非常重要的，以下圖為例，#16和#443這兩個人物不管是面向、穿著都非常類似，只能透過背包上微小的特徵(如:白色logo、水壺)去分辨兩者，透過CNN方法得出的feature map沒辦法獲得太多具有差異性的資訊，而Transformer的方法則可以明顯的保留細微的特徵，藉由這些特徵就可以分辨出不同的兩個人物。</p>
+<figure>
+    <img src="3.jpg" width="80%" style="margin:auto;">
+    <center><figcaption><i>圖三、Visualization of output feature maps</i></figcaption></center>
+</figure>
+
+<p>因此作者提出一種基於Transformer的model，除了baseline以外，他們還提出兩個module來幫助特徵學習上的優化:</p>
+<ul>
+<li><b>Jigsaw Patch Module(JPM)</b>: 將patch embeddings重新排列組合來得到更具代表性的特徵。</li>
+<li><b>Side Information Embedding(SIE)</b>: 將非視覺上的資訊encode進去模型幫助學習。</li>
+</ul>
+<h2 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h2><p>整個模型是由Vision Transformer作為baseline而成，所以整體架構其實和ViT很像，另外在input的部份多了一個Side Information Embedding一起丟進Transformer layer，在最後一層Transformer之前會分為兩個branch進行，左邊的global branch照著原本的流程計算出global feature，而右邊的local branch則會先丟進Jigsaw Patch Module做處理產生local feature，最後將兩邊的特徵混合得到最終的Re-ID特徵。</p>
+<figure>
+    <img src="model.jpg" width="90%" style="margin:auto;">
+    <center><figcaption><i>圖四、模型架構圖</i></figcaption></center>
+</figure>
+
+<h3 id="Transformer-based-strong-baseline"><a href="#Transformer-based-strong-baseline" class="headerlink" title="Transformer-based strong baseline"></a>Transformer-based strong baseline</h3><p>作者他們的baseline基本上和ViT的設定都是一樣的(圖五)，將圖片切成不同的patch後經過Linear projection layer後降到 $D$ 維空間，掛上 <code>position embedding</code> 用來學習圖片彼此順序上的關係與 <code>[cls] token</code> 代表比較general的特徵，整個input可以用下方式子表示，最後經過 $l$ 層的Transformer後得出最終的feature。</p>
+<script type="math/tex; mode=display">Z_0=[x_{cls}; F(x_p^1); F(x_p^2); ...F(x_p^N); ]+P</script><p>這邊有兩個比較特別的點，第一個是將圖片切割成不同的patch時，作者他們使用 <code>sliding window</code> 的方式，也就是切出來的patch彼此會有部分範圍重疊，我覺得應該是希望可以多少學習到一些關聯性，而不是彼此獨立的patch；第二個是最後的loss function，使用的是Re-ID標配的ID loss和Triplet loss，這兩個loss就不贅述，比較特別的是有使用<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1903.07071">BNNeck</a>，特徵計算完Triplet loss後，再丟進一層Batch normalization layer讓特徵的每個維度比較平衡一點，之前研究就有證明這樣的方式不只可以加快模型收斂速度，也可以些微提升performance。</p>
+<figure>
+    <img src="baseline.jpg" width="70%" style="margin:auto;">
+    <center><figcaption><i>圖五、Transformer baseline</i></figcaption></center>
+</figure>
+
+<h3 id="Side-Information-Embedding"><a href="#Side-Information-Embedding" class="headerlink" title="Side Information Embedding"></a>Side Information Embedding</h3><p>在input的部份，作者他們還有將非視覺上的資訊(side info.)透過1-D Learnable Embedding包進模型內，希望透過其他資訊能夠減少資料本身的bias，所謂的side information指的是除了Dataset中的RGB影像外，其他有提供的資訊，像是不同相機的ID或是不同視角的資訊，應該是用簡單的sparse label的方式當成另一個維度的特徵。原本model中的position embedding在每個patch的初始值都不同(如:0~8)，但SIE在同一張影像內的所有patch都會是相同的值，因為一張影像是由同一個視角同一個相機所拍攝出的，可以從圖四看到SIE用相同的藍色代表同樣的初始值。最後由一個超參數 $\lambda$ 調整在input中的佔比，如下式所示，其中的 $r*N_V+q$ 只是一個簡單的二維表格索引。</p>
+<script type="math/tex; mode=display">Z_0'=Z_0+\lambda S_{(C,V)}[r*N_V+q]</script><h3 id="Jigsaw-Patch-Module"><a href="#Jigsaw-Patch-Module" class="headerlink" title="Jigsaw Patch Module"></a>Jigsaw Patch Module</h3><p>在最後一層Transformer layer之前，會將特徵分為兩邊做處理，左邊的branch維持原樣繼續跑一層Transformer layer後得出 <code>Global feature</code>，右邊的branch則會透過JPM先將原本有順序性的patch打亂，打亂的方式是先將前面 $m$ 個patch shift到最後面，再做shuffle後分配到 $k$ 組裡面，每一組的feature再跑最後一層Transformer layer得到 $k$ 組 <code>Local feature</code>，在訓練時每個feature各自計算自己的ID loss與Triplet loss，加總取平均，而在inference階段時，則是將 <code>Local feature</code> 接在 <code>Global feature</code> 之後得到最終的特徵再做預測。</p>
+<p>作者這樣做的用意應該是希望透過打亂順序，學習出更不一樣的特徵幫助訓練，不過單純打亂好像沒有太多物理意義，感覺只是操作上的方便(我去看他的code的確也就兩三行解決)，或許可以透過計算similarity去分組，或是其他想法可能可以得到更有效也更具解釋力的特徵。</p>
+<p>上述就是整個模型的架構，其實還算滿簡單好理解的，一個跟ViT幾乎一樣的骨架，加上兩個support module。</p>
+<h2 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h2><p>實驗的部份總共使用六種Datset，分別有四種行人與兩種車輛的Re-ID Dataset，實驗結果如圖六，整體來說除了一兩個數據略輸，其他所有數據都是目前最優，尤其在 <code>MSMT17</code> 與 <code>Occluded-Duke</code> 兩個資料集上的進步幅度都很多， <code>Occluded-Duke</code> 是從原本的DukeMTMC中在挑選更難更多遮擋的資料，這樣的表現與成長是很不錯的。</p>
+<figure>
+    <img src="sota.jpg" width="100%" style="margin:auto;">
+    <center><figcaption><i>圖六、實驗結果: 與其他方法比較; * 代表使用sliding window方式切割圖片;上標c代表使用相機ID的資訊;上標v代表使用視角的資訊;上標b代表兩者都有使用</i></figcaption></center>
+</figure>
+
+<h3 id="Ablation-Study"><a href="#Ablation-Study" class="headerlink" title="Ablation Study"></a>Ablation Study</h3><p>這部份的實驗我覺得就沒這麼吸精，如果真的有興趣可以自行去論文中察看，大概就是JPM和SIE這兩個module對模型都很有幫助，也能提升不少準確度。我認為作者可以去嘗試JPM不同的排序方法，或是將SIE用不同encoding的方式納入討論，甚至是這兩個module放在不同層之間使用的好壞，感覺都挺有趣的。</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>最後總結一下，這篇作者提出了一個基於Transformer的模型，希望可以解決過去CNN在Re-ID上碰到的困境與未解的難題，在此基礎上加入兩個不同的support module，希望透過不同面向幫助模型學習出有用的特徵，那在實驗的部份也說明了作者他們模型的強大，不過Transformer應該還有很多的進步空間，或許可以透過這篇paper達到拋磚引玉的效果，對Transformer-based的方法提出更多研究與改良。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/68584669">Re-ID問題定義詳細解釋</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    歡迎打賞(●'◡'●)
+  </button>
+  <div id="qr" style="display: none;">
+      <div style="display: inline-block;">
+        <img src="/images/eth.jpg" alt="大哲 以太幣 Eth">
+        <p>以太幣 Eth</p>
+      </div>
+      <div style="display: inline-block;">
+        <img src="/images/jko.jpg" alt="大哲 街口支付 JKO Pay">
+        <p>街口支付 JKO Pay</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/paper-review/" rel="tag"># paper review</a>
+              <a href="/tags/Transformer/" rel="tag"># Transformer</a>
+              <a href="/tags/Re-ID/" rel="tag"># Re-ID</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/26/driver-license/" rel="prev" title="雞腿換駕照? 考駕照制度真的合適嗎">
+      <i class="fa fa-chevron-left"></i> 雞腿換駕照? 考駕照制度真的合適嗎
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methodology"><span class="nav-number">2.</span> <span class="nav-text">Methodology</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Transformer-based-strong-baseline"><span class="nav-number">2.1.</span> <span class="nav-text">Transformer-based strong baseline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Side-Information-Embedding"><span class="nav-number">2.2.</span> <span class="nav-text">Side Information Embedding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Jigsaw-Patch-Module"><span class="nav-number">2.3.</span> <span class="nav-text">Jigsaw Patch Module</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Experiment"><span class="nav-number">3.</span> <span class="nav-text">Experiment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ablation-Study"><span class="nav-number">3.1.</span> <span class="nav-text">Ablation Study</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="大哲"
+      src="/images/pfp.jpg">
+  <p class="site-author-name" itemprop="name">大哲</p>
+  <div class="site-description" itemprop="description">你有多自律，就有多自由</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100006869535711" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100006869535711" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/chengxche/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;chengxche&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/cheng-che-cheng-645055232/" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;cheng-che-cheng-645055232&#x2F;" rel="noopener" target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/chengche6230" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chengche6230" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:chengche6230@gmail.com" title="E-Mail → mailto:chengche6230@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">大哲</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">35k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">31 分鐘</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 驅動
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '0ce2dc84ae1bf833e8aa',
+      clientSecret: '55751e87e7edb2ce6f86d39b2a98ab9d056c5e47',
+      repo        : 'chengche6230.github.io',
+      owner       : 'chengche6230',
+      admin       : ['chengche6230'],
+      id          : '1c96934d020a100dc71a237160afcb70',
+        language: 'zh-TW',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

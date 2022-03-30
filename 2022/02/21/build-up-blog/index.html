@@ -249,30 +249,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>儘管這幾年各種社群平台興起，舉凡眾所皆知的Fackbook、instagram、Twitter，乃至於Dcard、Telegram、Discord，讓許多人拋棄以往使用的部落格網站，像是時代的眼淚無名小站，但我始終覺得部落格有一種不為流量而耕耘的感覺，不是為了向朋友炫耀，也不是和家人摯友們分享，就是單純留給自己的一塊小空地，可以比較不在乎世俗外界的眼光，進而書寫自己想記錄的事物，寫文章何嘗不是一種好習慣?</p>
-<span id="more"></span>
-<p>身為一個資訊背景的研究生，其實這幾年不論是課業還是實驗室的工作，很常需要上網找資料自己解決問題，能夠自己解決問題而不是到處伸手牌好像成了工程師的一股傲氣(? (不過我也覺得變得越來越不會問問題了…這個以後再說)。總之，架設一個屬於自己的部落格有很多方式，我也嘗試過很多不同的平台，那這篇文章就是分享一下在<code>Github Pages</code>建立部落格的過程。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>儘管這幾年各種社群平台興起，舉凡眾所皆知的Fackbook、instagram、Twitter，乃至於Dcard、Telegram、Discord，讓許多人拋棄以往使用的部落格網站，像是時代的眼淚無名小站，但我始終覺得部落格有一種不為流量而耕耘的感覺，不是為了向朋友炫耀，也不是和家人摯友們分享，就是單純留給自己的一塊小空地，可以比較不在乎世俗外界的眼光，進而書寫自己想記錄的事物，寫文章何嘗不是一種好習慣?<br><span id="more"></span><br>身為一個資訊背景的研究生，其實這幾年不論是課業還是實驗室的工作，很常需要上網找資料自己解決問題，能夠自己解決問題而不是到處伸手牌好像成了工程師的一股傲氣(? (不過我也覺得變得越來越不會問問題了…這個以後再說)。總之，架設一個屬於自己的部落格有很多方式，我也嘗試過很多不同的平台，那這篇文章就是分享一下在<code>Github Pages</code>建立部落格的過程。</p>
 <h2 id="架設Hexo部落格"><a href="#架設Hexo部落格" class="headerlink" title="架設Hexo部落格"></a>架設Hexo部落格</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/">Hexo</a>是一個基於Node.js開發的網站框架，適合快速開發個人部落格，Hexo除了編譯速度快，也有很豐富的外掛套件，更能讓開發者快速的部署到Github Pages上。</p>
 <h3 id="Step-0-Github帳號"><a href="#Step-0-Github帳號" class="headerlink" title="Step 0 Github帳號"></a>Step 0 Github帳號</h3><p>因為部落格是基於<code>Github Pages</code>，所以必須要先有一個<a target="_blank" rel="noopener" href="https://github.com/">github</a>帳號，申請帳號沒有很複雜，網路上也很多資源了，就不多加贅述。</p>
 <h3 id="Step-1-建立repoitory"><a href="#Step-1-建立repoitory" class="headerlink" title="Step 1 建立repoitory"></a>Step 1 建立repoitory</h3><p>有了github帳號後，透過建立一個專案存放所有部落格網站需要用到的資源(如下圖所示)，在Repository name中要填入<code>&lt;username&gt;.github.io</code>，其中<i>username</i>就是自己的帳號。</p>
-<img src="repo.jpg" height="75%" width="75%">
-
+<p><img src="repo.jpg" height="75%" width="75%"></p>
 <h3 id="Step-2-建置Hexo環境"><a href="#Step-2-建置Hexo環境" class="headerlink" title="Step 2 建置Hexo環境"></a>Step 2 建置Hexo環境</h3><h4 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h4><p>Hexo是基於Node.js開發的，所以在使用hexo之前我們需要安裝<a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js</a>，直接到他們的官方網站下載並安裝，選擇左邊的LTS(右邊是最新的版本，可能沒有經過大量的環境測試，較為不穩定)。</p>
-<img src="nodejs.jpg" height="75%" width="75%">
-
+<p><img src="nodejs.jpg" height="75%" width="75%"></p>
 <p>另外我們也需要安裝<a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a>，幫助我們將網站部署到Github上或是clone不同模板的專案，安裝完成後在資料夾點擊右鍵如果可以看到下圖中的Git兩個選項就是安裝完成。</p>
-<img src="git.jpg" height="25%" width="25%">
-
-<h4 id="Hexo環境"><a href="#Hexo環境" class="headerlink" title="Hexo環境"></a>Hexo環境</h4><p>完成安裝後就可以正式開始建置Hexo的環境了，打開上圖中的<code>Git Bash Here</code>(或是任何的CLI介面，如:cmd、終端機等)，並使用一下指令安裝Hexo:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-<p>安裝後可以透過以下指令檢查Hexo版本，確認安裝完成:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-<img src="hexo-v.jpg" height="40%" width="40%">
-
-<h4 id="Hexo初始化"><a href="#Hexo初始化" class="headerlink" title="Hexo初始化"></a>Hexo初始化</h4><p>輸入指令建立Hexo資料夾，並安裝所需要的套件(要確認在新建立的資料夾底下安裝)。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;資料夾名稱&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;資料夾名稱&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<img src="hexo-init.jpg" height="60%" width="60%">
-
+<p><img src="git.jpg" height="25%" width="25%"></p>
+<h4 id="Hexo環境"><a href="#Hexo環境" class="headerlink" title="Hexo環境"></a>Hexo環境</h4><p>完成安裝後就可以正式開始建置Hexo的環境了，打開上圖中的<code>Git Bash Here</code>(或是任何的CLI介面，如:cmd、終端機等)，並使用一下指令安裝Hexo:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure><br>安裝後可以透過以下指令檢查Hexo版本，確認安裝完成:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure><br><img src="hexo-v.jpg" height="40%" width="40%"></p>
+<h4 id="Hexo初始化"><a href="#Hexo初始化" class="headerlink" title="Hexo初始化"></a>Hexo初始化</h4><p>輸入指令建立Hexo資料夾，並安裝所需要的套件(要確認在新建立的資料夾底下安裝)。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;資料夾名稱&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;資料夾名稱&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure><br><img src="hexo-init.jpg" height="60%" width="60%"></p>
 <p>安裝完成後會出現很多的資料夾以及檔案，幾個比較常用到的如下:</p>
 <ul>
 <li>scaffolds: 裡面放著<code>draft</code>(草稿)、<code>page</code>(頁面)、<code>post</code>(文章)三種模板檔案，在hexo新增頁面、文章等時，會對應生成初始化的spec</li>
@@ -281,15 +268,8 @@
 <li>public: 部署上傳後才會出現的資料夾，這裡的檔案就是Github上公開的檔案</li>
 <li>_config.yml: 關於網站配置的設定都放在這個文件中，可以在這裡改變網站的設定，如:網站名稱、作者、語言、使用主題、部署資訊等<br>其他檔案與資料夾比較少會使用到，如果有興趣或是未來需要可以再找相關資源。</li>
 </ul>
-<h4 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h4><p>完成Hexo初始建置後，就可以先將檔案等部署到Github上。在hexo資料夾底下輸入指令安裝需要的套件:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>到 <code>_config.yml</code> 中找到 <code>Deployment</code> 的區塊修改部署資訊，並將底下<i>username</i>改成自己的Github帳號:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
-<p>接著將hexo部署上去:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-<p>完成後就可以透過 <code>https://&lt;username&gt;.github.io</code> 的網址進入到個人部落格了! Github有時候沒辦法馬上更新，稍微等個幾分鐘就可以看到自己的網站了，下圖是hexo預設的landscape主題模板。</p>
-<img src="hexo-site.jpg" height="100%" width="100%">
-
+<h4 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h4><p>完成Hexo初始建置後，就可以先將檔案等部署到Github上。在hexo資料夾底下輸入指令安裝需要的套件:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><br>到 <code>_config.yml</code> 中找到 <code>Deployment</code> 的區塊修改部署資訊，並將底下<i>username</i>改成自己的Github帳號:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure><br>接著將hexo部署上去:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure><br>完成後就可以透過 <code>https://&lt;username&gt;.github.io</code> 的網址進入到個人部落格了! Github有時候沒辦法馬上更新，稍微等個幾分鐘就可以看到自己的網站了，下圖是hexo預設的landscape主題模板。</p>
+<p><img src="hexo-site.jpg" height="100%" width="100%"></p>
 <h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><p>Hexo的指令都可以在官方網站中搜尋，而部落格最常做的事情之一就是發文章了，這裡稍微簡述一下發一篇文章的流程:</p>
 <h4 id="新增一篇文章"><a href="#新增一篇文章" class="headerlink" title="新增一篇文章"></a>新增一篇文章</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br></pre></td></tr></table></figure>
 <ul>
@@ -298,8 +278,7 @@
 <li>新增後可以在 <code>source/_posts/</code> 資料夾底下找到文章的md檔</li>
 </ul>
 <h4 id="更新並部署文章"><a href="#更新並部署文章" class="headerlink" title="更新並部署文章"></a>更新並部署文章</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  // 清除靜態檔案與快取</span><br><span class="line">hexo generate  // 產生靜態檔案</span><br><span class="line">hexo deploy  // 部署到Github上</span><br></pre></td></tr></table></figure>
-<p>也可以簡化成以下指令:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d  // 產生靜態檔案後部署</span><br></pre></td></tr></table></figure>
+<p>也可以簡化成以下指令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d  // 產生靜態檔案後部署</span><br></pre></td></tr></table></figure></p>
 <h4 id="本地端伺服器"><a href="#本地端伺服器" class="headerlink" title="本地端伺服器"></a>本地端伺服器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server  // crtl+C 停止運行</span><br></pre></td></tr></table></figure>
 <p>指令打完就會看到server跑起來了，這時候到網頁打 <code>http://localhost:4000/</code> 就可以看到自己的網頁。<br>我自己會先在本地端測試修改後再一次部署上去Github，因為檔案的修改可以馬上在本地端看到變動，也省去一直部署的麻煩。</p>
 <h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>這篇文章講解了架部落格從0到1到過程，上述的指令大概就夠應付日常發文需求了，至於要怎麼讓部落格從1到100就是未來的工作了(我也還在學習當中…) 接下來我會講解一下我正在使用也是目前非常powerful的模板<a target="_blank" rel="noopener" href="https://theme-next.org/">Next</a>，使用這個開源的hexo主題模板可以省去非常多網站設計的時間的精力，也很不同的簡約風格，我個人滿喜歡的~</p>
@@ -423,7 +402,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -436,7 +415,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -489,12 +468,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="總字數">28k</span>
+    <span title="總字數">35k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">26 分鐘</span>
+    <span title="所需總閱讀時間">31 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 驅動
   </div>
@@ -565,6 +544,8 @@
 
 
 
+
+  
 
   
 
