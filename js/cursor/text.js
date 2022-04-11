@@ -1,7 +1,8 @@
 var a_idx = 0;
 jQuery(document).ready(function($) {
     $("body").click(function(e) {
-        var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");
+        var a = new Array("真假", "確實", "笑死", "有料", "冷靜");
+        var color = new Array("#A7414A", "#282726", "#6A8A82", "#A37C27", "#563838");
         var $i = $("<span/>").text(a[a_idx]);
         var x = e.pageX,
             y = e.pageY;
@@ -10,7 +11,7 @@ jQuery(document).ready(function($) {
             "top": y - 28,
             "left": x - a[a_idx].length * 8,
             "position": "absolute",
-            "color": "#ff7a45"
+            "color": color[a_idx]
         });
         $("body").append($i);
         $i.animate({

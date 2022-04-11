@@ -28,7 +28,7 @@
 <meta property="og:description" content="架設部落格站也差不多一個多月了，hexo雖然很方便，但還是需要自己調整很多設定才可以達到理想中的效果，NexT主題也有提供大部分版面配置與效果，寫這篇文章把一些個人化的修改紀錄起來，方便未來去作底層的修改，也分享給大家~">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-03-20T08:20:45.000Z">
-<meta property="article:modified_time" content="2022-04-01T17:13:28.805Z">
+<meta property="article:modified_time" content="2022-04-10T06:37:38.138Z">
 <meta property="article:author" content="大哲">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
@@ -77,6 +77,7 @@
   </style>
 </noscript>
 
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -197,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-04-02 01:13:28" itemprop="dateModified" datetime="2022-04-02T01:13:28+08:00">2022-04-02</time>
+                <time title="修改時間：2022-04-10 14:37:38" itemprop="dateModified" datetime="2022-04-10T14:37:38+08:00">2022-04-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -222,14 +223,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>5.8k</span>
+              <span>6.4k</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              <span>5 分鐘</span>
+              <span>6 分鐘</span>
             </span>
 
         </div>
@@ -244,7 +245,7 @@
         <p>架設部落格站也差不多一個多月了，hexo雖然很方便，但還是需要自己調整很多設定才可以達到理想中的效果，NexT主題也有提供大部分版面配置與效果，寫這篇文章把一些個人化的修改紀錄起來，方便未來去作底層的修改，也分享給大家~</p>
 <span id="more"></span>
 <blockquote>
-<p><i>last update: 2022/4/2</i></p>
+<p><i>last update: 2022/4/10</i></p>
 </blockquote>
 <h2 id="hexo-config-yml-中的設定"><a href="#hexo-config-yml-中的設定" class="headerlink" title="hexo _config.yml 中的設定"></a>hexo _config.yml 中的設定</h2><p>針對我有修改過的設定說明<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">language: zh-TW <span class="comment"># 調整語系</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Extensions</span></span><br><span class="line">theme: next <span class="comment"># 調整自己想要使用的主題</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment # 修改部署上github的資訊</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git <span class="comment"># 透過git</span></span><br><span class="line">  repo: https://github.com/chengche6230/chengche6230.github.io.git <span class="comment"># 記得將username改成自己的</span></span><br><span class="line">  branch: main <span class="comment"># 選擇要部署的branch(通常是直接部署上main)</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="NexT-config-yml-中的設定"><a href="#NexT-config-yml-中的設定" class="headerlink" title="NexT _config.yml 中的設定"></a>NexT _config.yml 中的設定</h2><p>這是主題自己的config檔，位於hexo根目錄的<code>.\themes\next\_config.yml</code>。NexT強大的一點就是支援非常多的套件，都有寫在config檔裡面了，但基本上預設都是關閉，可以自己打開玩看看~<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">favicon: <span class="comment"># 修改網頁icon的地方，將圖片放到 \source\images 底下</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Schemes</span></span><br><span class="line">scheme: Mist <span class="comment"># NexT底下還有四種不同的風格&#123;Muse, Mist, Pisces, Gemini&#125;，可以根據喜好修改</span></span><br><span class="line"></span><br><span class="line">menu: <span class="comment"># 選擇要顯示哪些頁面，並使用甚麼icon</span></span><br><span class="line"></span><br><span class="line">footer: <span class="comment"># 這區可以設定頁面底部的資訊，如:copyright, icon等</span></span><br><span class="line"></span><br><span class="line">sidebar:</span><br><span class="line">  position: left <span class="comment"># 修改sidebar的出現位置</span></span><br><span class="line">  display: always <span class="comment"># 修改sidebar的出現時機</span></span><br><span class="line"></span><br><span class="line">avatar: <span class="comment"># 修改大頭貼的照片和外框</span></span><br><span class="line"></span><br><span class="line">social: <span class="comment"># 修改社群帳號資料</span></span><br><span class="line"></span><br><span class="line">reward: <span class="comment"># 可以放收款QR code讓別人打賞</span></span><br><span class="line"></span><br><span class="line">busuanzi_count: <span class="comment"># 不蒜子插件(用來記錄造訪人數和觀看次數)，如網頁底下所示</span></span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  total_visitors: <span class="literal">true</span></span><br><span class="line">  total_visitors_icon: fa fa-user</span><br><span class="line">  total_views: <span class="literal">true</span></span><br><span class="line">  total_views_icon: fa fa-eye</span><br><span class="line">  post_views: <span class="literal">true</span></span><br><span class="line">  post_views_icon: fa fa-eye</span><br></pre></td></tr></table></figure></p>
@@ -259,12 +260,15 @@
 <ul>
 <li><a href="/js/cursor/fireworks.js">煙火特效</a></li>
 <li><a href="/js/cursor/love.js">愛心特效</a></li>
+<li><a href="/js/cursor/text.js">文字特效</a></li>
 </ul>
-<p>在 <code>themes\next\layout\</code> 中新增 <code>_custom</code> 資料夾，並新增 <code>custom.swig</code> 檔，有幾份腳本就寫對應的code:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="comment"># 鼠标点击特效 #&#125;</span></span><br><span class="line">&#123;% <span class="keyword">if</span> theme.cursor_effect == <span class="string">&quot;fireworks&quot;</span> %&#125;</span><br><span class="line">  &lt;script async src=<span class="string">&quot;/js/cursor/fireworks.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&#123;% elseif theme.cursor_effect == <span class="string">&quot;love&quot;</span> %&#125;</span><br><span class="line">  &lt;script async src=<span class="string">&quot;/js/cursor/love.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在 <code>themes\next\layout\</code> 中新增 <code>_custom</code> 資料夾，並新增 <code>custom.swig</code> 檔，有幾份腳本就寫對應的code:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="comment"># 鼠标点击特效 #&#125;</span></span><br><span class="line">&#123;% <span class="keyword">if</span> theme.cursor_effect == <span class="string">&quot;fireworks&quot;</span> %&#125;</span><br><span class="line">  &lt;script async src=<span class="string">&quot;/js/cursor/fireworks.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&#123;% elseif theme.cursor_effect == <span class="string">&quot;love&quot;</span> %&#125;</span><br><span class="line">  &lt;script async src=<span class="string">&quot;/js/cursor/love.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&#123;% elseif theme.cursor_effect == <span class="string">&quot;text&quot;</span> %&#125;</span><br><span class="line">  &lt;script async src=<span class="string">&quot;/js/cursor/text.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure></p>
 <p>然後在 <code>themes\next\layout\_layout.swig</code> 檔案最底下新增:</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  &#123;% include &#x27;_third-party/math/index.swig&#x27; %&#125;</span><br><span class="line">  &#123;% include &#x27;_third-party/quicklink.swig&#x27; %&#125;</span><br><span class="line"></span><br><span class="line"><span class="addition">+ &#123;% include &#x27;_custom/custom.swig&#x27; %&#125;</span></span><br><span class="line"></span><br><span class="line">  &#123;&#123;- next_inject(&#x27;bodyEnd&#x27;) &#125;&#125;</span><br><span class="line">  &#123;%- if theme.pjax %&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &#123;%- endif %&#125;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>設定完成後，就可以在主題的配置文件 <code>_config.yml</code> 中添加設定我們想要切換的特效:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mouse click effect: fireworks | love</span></span><br><span class="line">cursor_effect: fireworks</span><br></pre></td></tr></table></figure></p>
-<p>最後需要重新產生動態文件 <code>hexo g</code>，在開啟localhost或是部署到github上。</p>
+<p>設定完成後，就可以在主題的配置文件 <code>_config.yml</code> 中添加設定我們想要切換的特效:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mouse click effect: fireworks | love | text</span></span><br><span class="line">cursor_effect: fireworks</span><br></pre></td></tr></table></figure></p>
+<p>最後需要重新產生動態文件 <code>hexo g</code>，再開啟localhost或是部署到github上。</p>
+<h3 id="文字特效遇到-jQuery-is-not-defined-問題而無法使用"><a href="#文字特效遇到-jQuery-is-not-defined-問題而無法使用" class="headerlink" title="文字特效遇到 [jQuery is not defined] 問題而無法使用"></a>文字特效遇到 [jQuery is not defined] 問題而無法使用</h3><p>因為<code>text.js</code>內有用到jQuery，若沒有先import進來就會無法正常使用，到 <code>_layout.swig</code> 引入jQuery即可:</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  ...</span><br><span class="line">  &#123;&#123; partial(&#x27;_third-party/analytics/index.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line">  &#123;&#123; partial(&#x27;_scripts/noscript.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line"><span class="addition">+  &lt;script src=&quot;http://code.jquery.com/jquery-1.11.3.min.js&quot;&gt;&lt;/script&gt;</span></span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="Gitalk-留言板"><a href="#Gitalk-留言板" class="headerlink" title="Gitalk 留言板"></a>Gitalk 留言板</h2><p><i>待更</i><br>具體可以參考Ray寫的這篇: <a target="_blank" rel="noopener" href="https://israynotarray.com/hexo/20191206/2397475810/">十分鐘超詳細替 Hexo Next 開啟 Gitalk 留言版</a></p>
 <h2 id="在文章中使用Latex輸入數學式子-Mathjax"><a href="#在文章中使用Latex輸入數學式子-Mathjax" class="headerlink" title="在文章中使用Latex輸入數學式子 - Mathjax"></a>在文章中使用Latex輸入數學式子 - Mathjax</h2><p>應該不少人會需要在文章中輸入數學公式，尤其做分析或推導，在網上看到一篇寫的很詳盡的文章，我放在底下Reference了需要可以參考~ hexo雖然可以用Markdown語言編寫文章，但因為渲染器的問題並不能直接使用 <code>$$</code> 來輸入數學公式，因此我們需要透過額外的渲染引擎來實現。</p>
 <p>首先，要將hexo預設的渲染引擎 <code>marked</code> 替換:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure></p>
@@ -385,7 +389,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.</span> <span class="nav-text">hexo _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">NexT _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Page%E4%B8%ADfront-matter%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.</span> <span class="nav-text">Page中front matter設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%B6%B2%E7%AB%99%E4%B8%AD%E4%BD%BF%E7%94%A8Emoji%F0%9F%98%8E"><span class="nav-number">4.</span> <span class="nav-text">在網站中使用Emoji😎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BB%91%E9%BC%A0%E9%BB%9E%E6%93%8A%E7%89%B9%E6%95%88"><span class="nav-number">5.</span> <span class="nav-text">滑鼠點擊特效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gitalk-%E7%95%99%E8%A8%80%E6%9D%BF"><span class="nav-number">6.</span> <span class="nav-text">Gitalk 留言板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E4%BD%BF%E7%94%A8Latex%E8%BC%B8%E5%85%A5%E6%95%B8%E5%AD%B8%E5%BC%8F%E5%AD%90-Mathjax"><span class="nav-number">7.</span> <span class="nav-text">在文章中使用Latex輸入數學式子 - Mathjax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chat-room"><span class="nav-number">8.</span> <span class="nav-text">Chat room</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">9.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.</span> <span class="nav-text">hexo _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT-config-yml-%E4%B8%AD%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">NexT _config.yml 中的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Page%E4%B8%ADfront-matter%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.</span> <span class="nav-text">Page中front matter設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%B6%B2%E7%AB%99%E4%B8%AD%E4%BD%BF%E7%94%A8Emoji%F0%9F%98%8E"><span class="nav-number">4.</span> <span class="nav-text">在網站中使用Emoji😎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BB%91%E9%BC%A0%E9%BB%9E%E6%93%8A%E7%89%B9%E6%95%88"><span class="nav-number">5.</span> <span class="nav-text">滑鼠點擊特效</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E5%AD%97%E7%89%B9%E6%95%88%E9%81%87%E5%88%B0-jQuery-is-not-defined-%E5%95%8F%E9%A1%8C%E8%80%8C%E7%84%A1%E6%B3%95%E4%BD%BF%E7%94%A8"><span class="nav-number">5.1.</span> <span class="nav-text">文字特效遇到 [jQuery is not defined] 問題而無法使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gitalk-%E7%95%99%E8%A8%80%E6%9D%BF"><span class="nav-number">6.</span> <span class="nav-text">Gitalk 留言板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E4%BD%BF%E7%94%A8Latex%E8%BC%B8%E5%85%A5%E6%95%B8%E5%AD%B8%E5%BC%8F%E5%AD%90-Mathjax"><span class="nav-number">7.</span> <span class="nav-text">在文章中使用Latex輸入數學式子 - Mathjax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chat-room"><span class="nav-number">8.</span> <span class="nav-text">Chat room</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">9.</span> <span class="nav-text">Reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -401,7 +405,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -414,7 +418,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -472,12 +476,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="總字數">35k</span>
+    <span title="總字數">42k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">32 分鐘</span>
+    <span title="所需總閱讀時間">38 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 驅動
   </div>
@@ -569,6 +573,9 @@
 
 
   
+
+  <script async src="/js/cursor/text.js"></script>
+
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
 

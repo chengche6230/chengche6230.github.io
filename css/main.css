@@ -1197,7 +1197,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #34c960;
+  background: #3983d4;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1210,7 +1210,9 @@ pre .javascript .function {
   margin-top: 15px;
 }
 .sidebar-button a {
-  border: 1px solid #fc6423;
+  border-top: 1px solid #fc6423;
+  border-left: 1px solid #fc6423;
+  border-right: 1px solid #555;
   border-radius: 4px;
   color: #fc6423;
   display: inline-block;
@@ -1224,7 +1226,9 @@ pre .javascript .function {
 }
 .sidebar-button a:hover {
   background: #fc6423;
-  border: 1px solid #fc6423;
+  border-top: 1px solid #fc6423;
+  border-left: 1px solid #fc6423;
+  border-right: 1px solid #fff;
   color: #fff;
 }
 .sidebar-button a:hover .fa,
