@@ -28,7 +28,7 @@
 <meta property="og:description" content="架設部落格站也差不多一個多月了，hexo雖然很方便，但還是需要自己調整很多設定才可以達到理想中的效果，NexT主題也有提供大部分版面配置與效果，寫這篇文章把一些個人化的修改紀錄起來，方便未來去作底層的修改，也分享給大家~">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-03-20T08:20:45.000Z">
-<meta property="article:modified_time" content="2022-04-10T06:37:38.138Z">
+<meta property="article:modified_time" content="2022-04-13T09:57:00.590Z">
 <meta property="article:author" content="大哲">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-04-10 14:37:38" itemprop="dateModified" datetime="2022-04-10T14:37:38+08:00">2022-04-10</time>
+                <time title="修改時間：2022-04-13 17:57:00" itemprop="dateModified" datetime="2022-04-13T17:57:00+08:00">2022-04-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -223,7 +223,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>6.4k</span>
+              <span>6.5k</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -269,6 +269,7 @@
 <p>最後需要重新產生動態文件 <code>hexo g</code>，再開啟localhost或是部署到github上。</p>
 <h3 id="文字特效遇到-jQuery-is-not-defined-問題而無法使用"><a href="#文字特效遇到-jQuery-is-not-defined-問題而無法使用" class="headerlink" title="文字特效遇到 [jQuery is not defined] 問題而無法使用"></a>文字特效遇到 [jQuery is not defined] 問題而無法使用</h3><p>因為<code>text.js</code>內有用到jQuery，若沒有先import進來就會無法正常使用，到 <code>_layout.swig</code> 引入jQuery即可:</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  ...</span><br><span class="line">  &#123;&#123; partial(&#x27;_third-party/analytics/index.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line">  &#123;&#123; partial(&#x27;_scripts/noscript.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line"><span class="addition">+  &lt;script src=&quot;http://code.jquery.com/jquery-1.11.3.min.js&quot;&gt;&lt;/script&gt;</span></span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+<p>如過設定完在本地端可以正常顯示特效，但deploy上去後就會出錯的話，有可能是外部資源讀取失敗導致報錯，可以將整個 <code>jquery-1.11.3.min.js</code> 存在本地端，使用特效時就可以直接讀取本地端的資源js檔，即可正常顯示文字特效。</p>
 <h2 id="Gitalk-留言板"><a href="#Gitalk-留言板" class="headerlink" title="Gitalk 留言板"></a>Gitalk 留言板</h2><p><i>待更</i><br>具體可以參考Ray寫的這篇: <a target="_blank" rel="noopener" href="https://israynotarray.com/hexo/20191206/2397475810/">十分鐘超詳細替 Hexo Next 開啟 Gitalk 留言版</a></p>
 <h2 id="在文章中使用Latex輸入數學式子-Mathjax"><a href="#在文章中使用Latex輸入數學式子-Mathjax" class="headerlink" title="在文章中使用Latex輸入數學式子 - Mathjax"></a>在文章中使用Latex輸入數學式子 - Mathjax</h2><p>應該不少人會需要在文章中輸入數學公式，尤其做分析或推導，在網上看到一篇寫的很詳盡的文章，我放在底下Reference了需要可以參考~ hexo雖然可以用Markdown語言編寫文章，但因為渲染器的問題並不能直接使用 <code>$$</code> 來輸入數學公式，因此我們需要透過額外的渲染引擎來實現。</p>
 <p>首先，要將hexo預設的渲染引擎 <code>marked</code> 替換:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure></p>
