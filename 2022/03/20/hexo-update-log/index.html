@@ -28,7 +28,7 @@
 <meta property="og:description" content="架設部落格站也差不多一個多月了，hexo雖然很方便，但還是需要自己調整很多設定才可以達到理想中的效果，NexT主題也有提供大部分版面配置與效果，寫這篇文章把一些個人化的修改紀錄起來，方便未來去作底層的修改，也分享給大家~">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-03-20T08:20:45.000Z">
-<meta property="article:modified_time" content="2022-04-13T09:57:00.590Z">
+<meta property="article:modified_time" content="2022-06-14T06:12:23.876Z">
 <meta property="article:author" content="大哲">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-04-13 17:57:00" itemprop="dateModified" datetime="2022-04-13T17:57:00+08:00">2022-04-13</time>
+                <time title="修改時間：2022-06-14 14:12:23" itemprop="dateModified" datetime="2022-06-14T14:12:23+08:00">2022-06-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -281,7 +281,7 @@
 <p>如果是使用next主題要注意會有兩個mathjax的區塊，要改到正確的mathjax，要不然不會生效。另外，有其他教學需要去改hexo的config，但我測試後是不需要的~ 完成以上步驟再清除暫存重新產生動態文件後( <code>hexo cl &amp;&amp; hexo g</code> )，就可以看到漂亮的公式了!</p>
 <h2 id="Chat-room"><a href="#Chat-room" class="headerlink" title="Chat room"></a>Chat room</h2><p>開啟個人聊天室可以直接私訊作者，雖然感覺有留言版就夠了，不過還是用來玩看看，以後不需要再關閉~<br>先到 <code>NexT</code> 底下的 <code>_config.yml</code>，sidebar那區將chat打開，並選擇要使用的聊天室:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chat:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  service: chatra</span><br><span class="line">  <span class="comment">#service: tidio</span></span><br></pre></td></tr></table></figure></p>
 <p>再到這區選擇要使用的聊天室服務，並輸入自己的id/key(都會是一長串的亂碼，應該滿好找的🤔):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Chat Services</span></span><br><span class="line"><span class="comment"># See: https://theme-next.org/docs/third-party-services/chat-services</span></span><br><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line">chatra:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  async: <span class="literal">true</span></span><br><span class="line">  <span class="built_in">id</span>: &lt;<span class="built_in">type</span> <span class="built_in">id</span> here&gt; <span class="comment"># Visit Dashboard to get your ChatraID</span></span><br><span class="line">  <span class="comment">#embed: # Unfinished experimental feature for developers. See: https://chatra.io/help/api/#injectto</span></span><br><span class="line"></span><br><span class="line">tidio:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">false</span></span><br><span class="line">  key: &lt;<span class="built_in">type</span> key here&gt; <span class="comment"># Public Key, get it from dashboard. See: https://www.tidiochat.com/panel/settings/developer</span></span><br></pre></td></tr></table></figure></p>
-<p>這兩種聊天室都有分免費版和收費版，免費仔指有一些基本功能可以用，不過兩者差異沒有很大，可以選自己喜歡的外觀、介面去操作，<code>tidio</code> 有支援中文，介面客製化程度比較高，不過我比較喜歡簡潔一點的 <code>chatra</code>。</p>
+<p>這兩種聊天室都有分免費版和收費版，免費仔只有一些基本功能可以用，不過兩者差異沒有很大，可以選自己喜歡的外觀、介面去操作，<code>tidio</code> 有支援中文，介面客製化程度比較高，不過我比較喜歡簡潔一點的 <code>chatra</code>。</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://lamirs.vercel.app/hexo-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8emoji/">hexo - 配置使用 emoji</a></li>
 <li><a target="_blank" rel="noopener" href="https://tding.top/archives/58cff12b.html">Hexo-NexT 添加打字特效、鼠标点击特效</a></li>
@@ -424,11 +424,6 @@
       </div>
   </nav>
 </div>
-  <div class="sidebar-button motion-element">
-    <a onclick="Chatra('openChat', true);"><i class="fa fa-comment"></i>
-    Chat
-  </a>
-  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
         <a href="https://www.facebook.com/profile.php?id=100006869535711" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100006869535711" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
