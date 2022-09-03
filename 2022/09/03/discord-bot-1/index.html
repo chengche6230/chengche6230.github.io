@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/guitar-color-64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/guitar-color-64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/guiar-color-48.png">
+  <link rel="mask-icon" href="/images/guitar-color.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="從開始使用Discord大概3~4年了，Discord的功能真的是非常強大完整，不管是遊戲群組、實況主社群，或是幣圈都非常喜歡使用Discord，而這半年參與了很多幣圈項目，也看到非常多強大的Discord bot，無論是玩小遊戲(大逃殺、德州撲克)，還是即時追蹤各種鏈上資訊(錢包交易、合約讀寫)，或是協助MOD的管理機器人，我覺得Discord加入機器人後完全是另一個世界啊✨ 因此自己就稍微研究">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Discord Bot】01: 建立一個自己的聊天機器人">
+<meta property="og:url" content="http://example.com/2022/09/03/discord-bot-1/index.html">
+<meta property="og:site_name" content="Che Blog">
+<meta property="og:description" content="從開始使用Discord大概3~4年了，Discord的功能真的是非常強大完整，不管是遊戲群組、實況主社群，或是幣圈都非常喜歡使用Discord，而這半年參與了很多幣圈項目，也看到非常多強大的Discord bot，無論是玩小遊戲(大逃殺、德州撲克)，還是即時追蹤各種鏈上資訊(錢包交易、合約讀寫)，或是協助MOD的管理機器人，我覺得Discord加入機器人後完全是另一個世界啊✨ 因此自己就稍微研究">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://example.com/2022/09/03/discord-bot-1/1.jpg">
+<meta property="og:image" content="http://example.com/2022/09/03/discord-bot-1/2.jpg">
+<meta property="og:image" content="http://example.com/2022/09/03/discord-bot-1/3.jpg">
+<meta property="og:image" content="http://example.com/2022/09/03/discord-bot-1/4.jpg">
+<meta property="og:image" content="http://example.com/2022/09/03/discord-bot-1/5.jpg">
+<meta property="og:image" content="http://example.com/2022/09/03/discord-bot-1/6.jpg">
+<meta property="article:published_time" content="2022-09-03T06:58:55.000Z">
+<meta property="article:modified_time" content="2022-09-03T09:10:24.537Z">
+<meta property="article:author" content="大哲">
+<meta property="article:tag" content="Discord bot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/09/03/discord-bot-1/1.jpg">
+
+<link rel="canonical" href="http://example.com/2022/09/03/discord-bot-1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>【Discord Bot】01: 建立一個自己的聊天機器人 | Che Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Che Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/discord-bot-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pfp.jpg">
+      <meta itemprop="name" content="大哲">
+      <meta itemprop="description" content="你有多自律，就有多自由">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Che Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【Discord Bot】01: 建立一個自己的聊天機器人
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2022-09-03 14:58:55 / 修改時間：17:10:24" itemprop="dateCreated datePublished" datetime="2022-09-03T14:58:55+08:00">2022-09-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%F0%9F%94%A7-%E6%8A%80%E8%A1%93%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">🔧 技術分析</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>4k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>4 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>從開始使用Discord大概3~4年了，Discord的功能真的是非常強大完整，不管是遊戲群組、實況主社群，或是幣圈都非常喜歡使用Discord，而這半年參與了很多幣圈項目，也看到非常多強大的Discord bot，無論是玩小遊戲(大逃殺、德州撲克)，還是即時追蹤各種鏈上資訊(錢包交易、合約讀寫)，或是協助MOD的管理機器人，我覺得Discord加入機器人後完全是另一個世界啊✨ 因此自己就稍微研究了一下怎麼部署一個bot，並整理下來!</p>
+<span id="more"></span>
+<h2 id="建立Discord-Bot"><a href="#建立Discord-Bot" class="headerlink" title="建立Discord Bot"></a>建立Discord Bot</h2><p>要使用Discord bot當然要有自己的Discord帳號，接著到<a target="_blank" rel="noopener" href="https://discord.com/developers/applications">Discord Developer Portal</a>申請一個application，這個名字以後都可以進行更改。</p>
+<figure>
+    <img src="1.jpg" width="70%" style="margin:auto;">
+    <center><figcaption><i>圖一、新增Application</i></figcaption></center>
+</figure>
+
+<p>接著點選左側的Bot並新增一個Bot，將頭像旁邊的Token記錄下來(若沒出現可以點選Reset Token)</p>
+<figure>
+    <img src="2.jpg" width="90%" style="margin:auto;">
+    <center><figcaption><i>圖二、新增Bot</i></figcaption></center>
+</figure>
+
+<p>到Bot頁面最底下選取需要的權限，不同權限對應不同的編碼。</p>
+<figure>
+    <img src="3.jpg" width="90%" style="margin:auto;">
+    <center><figcaption><i>圖三、選取需要的權限</i></figcaption></center>
+</figure>
+
+<p>將General Information裡面的APPLICATION ID以及剛剛產生的權限碼分別替換下面的APPLICATION_ID、PERMISSIONS_INTEGER，產生的網址就可以將你的bot加入你自己的server。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://discordapp.com/oauth2/authorize?&amp;client_id=APPLICATION_ID&amp;scope=bot&amp;permissions=PERMISSIONS_INTEGER</span><br></pre></td></tr></table></figure>
+<figure>
+    <img src="4.jpg" width="70%" style="margin:auto;">
+    <center><figcaption><i>圖四、透過上面產生的連結將Bot加入自己的伺服器中</i></figcaption></center>
+</figure>
+
+<h2 id="利用Discord-js與機器人互動"><a href="#利用Discord-js與機器人互動" class="headerlink" title="利用Discord.js與機器人互動"></a>利用Discord.js與機器人互動</h2><h3 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a>Prerequisite</h3><ul>
+<li>整個bot是基於Node.js的架構去編寫，所以需要先安裝Node.js的環境，若還沒下載可以參考之前的<a target="_blank" rel="noopener" href="https://chengche6230.github.io/2022/02/21/build-up-blog/">這篇文章</a></li>
+<li>新增一個Folder存放所有檔案(ex: Demo-bot/)</li>
+</ul>
+<h3 id="下載Discord-js"><a href="#下載Discord-js" class="headerlink" title="下載Discord.js"></a>下載Discord.js</h3><p>在Demo-bot/按照指令依序執行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line">npm install discord.js</span><br></pre></td></tr></table></figure></p>
+<h3 id="Initial-files"><a href="#Initial-files" class="headerlink" title="Initial files"></a>Initial files</h3><p>分別建立 <code>config.json</code>、<code>index.js</code></p>
+<p><code>config.json</code>: 記錄clientId(上面的Application ID), guildId(<a target="_blank" rel="noopener" href="https://support.discord.com/hc/zh-tw/articles/206346498-%E6%88%91%E5%9C%A8%E5%93%AA%E8%A3%A1%E5%8F%AF%E4%BB%A5%E6%89%BE%E5%88%B0%E6%88%91%E7%9A%84%E7%94%A8%E6%88%B6-%E6%9C%8D%E5%8B%99%E5%99%A8-%E6%B6%88%E6%81%AFID-">如何找到伺服器ID?</a>), token(圖二)<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;clientId&quot;</span><span class="punctuation">:</span><span class="string">&quot;YOUR_APPLICATION_ID&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;guildId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;YOU_SERVER_ID&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;token&quot;</span><span class="punctuation">:</span> <span class="string">&quot;YOUR_TOKEN&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p><code>index.js</code>: main file，將來執行機器人的主要文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Require the necessary discord.js classes</span></span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Client</span>, <span class="title class_">GatewayIntentBits</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;discord.js&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; token &#125; = <span class="built_in">require</span>(<span class="string">&#x27;./config.json&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a new client instance</span></span><br><span class="line"><span class="keyword">const</span> client = <span class="keyword">new</span> <span class="title class_">Client</span>(&#123; <span class="attr">intents</span>: [<span class="title class_">GatewayIntentBits</span>.<span class="property">Guilds</span>] &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// When the client is ready, run this code (only once)</span></span><br><span class="line">client.<span class="title function_">once</span>(<span class="string">&#x27;ready&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Ready!&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Login to Discord with your client&#x27;s token</span></span><br><span class="line">client.<span class="title function_">login</span>(token);</span><br></pre></td></tr></table></figure></p>
+<p>新增完兩個文件後，執行 <code>node index.js</code>，若console出現 <code>Ready!</code> 就代表bot成功運行!<br>目前的檔案架構:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Demo-bot/</span><br><span class="line">    node_modules/</span><br><span class="line">    config.json</span><br><span class="line">    index.js</span><br><span class="line">    package-lock.json</span><br><span class="line">    package.json</span><br></pre></td></tr></table></figure></p>
+<p>一切就緒後，就可以註冊指令讓bot在Discord內和大家互動了!</p>
+<h3 id="建立互動指令"><a href="#建立互動指令" class="headerlink" title="建立互動指令"></a>建立互動指令</h3><p>首先需要安裝 <code>@discordjs/rest</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @discordjs/rest</span><br></pre></td></tr></table></figure>
+<p>並建立 <code>deploy-commands.js</code> 用來處理指令。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">SlashCommandBuilder</span>, <span class="title class_">Routes</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;discord.js&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; <span class="variable constant_">REST</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;@discordjs/rest&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; clientId, guildId, token &#125; = <span class="built_in">require</span>(<span class="string">&#x27;./config.json&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> commands = [</span><br><span class="line">    <span class="comment">// 在此註冊你所需要的指令</span></span><br><span class="line">	<span class="keyword">new</span> <span class="title class_">SlashCommandBuilder</span>().<span class="title function_">setName</span>(<span class="string">&#x27;ping&#x27;</span>).<span class="title function_">setDescription</span>(<span class="string">&#x27;Replies with pong!&#x27;</span>),</span><br><span class="line">	<span class="keyword">new</span> <span class="title class_">SlashCommandBuilder</span>().<span class="title function_">setName</span>(<span class="string">&#x27;server&#x27;</span>).<span class="title function_">setDescription</span>(<span class="string">&#x27;Replies with server info!&#x27;</span>),</span><br><span class="line">	<span class="keyword">new</span> <span class="title class_">SlashCommandBuilder</span>().<span class="title function_">setName</span>(<span class="string">&#x27;user&#x27;</span>).<span class="title function_">setDescription</span>(<span class="string">&#x27;Replies with user info!&#x27;</span>),</span><br><span class="line">]</span><br><span class="line">	.<span class="title function_">map</span>(<span class="function"><span class="params">command</span> =&gt;</span> command.<span class="title function_">toJSON</span>());</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rest = <span class="keyword">new</span> <span class="title function_">REST</span>(&#123; <span class="attr">version</span>: <span class="string">&#x27;10&#x27;</span> &#125;).<span class="title function_">setToken</span>(token);</span><br><span class="line"></span><br><span class="line">rest.<span class="title function_">put</span>(<span class="title class_">Routes</span>.<span class="title function_">applicationGuildCommands</span>(clientId, guildId), &#123; <span class="attr">body</span>: commands &#125;)</span><br><span class="line">	.<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Successfully registered <span class="subst">$&#123;data.length&#125;</span> application commands.`</span>))</span><br><span class="line">	.<span class="title function_">catch</span>(<span class="variable language_">console</span>.<span class="property">error</span>);</span><br></pre></td></tr></table></figure></p>
+<p>執行 <code>node deploy-commands.js</code> 完成指令註冊，往後只要更動過指令就需要重新執行一次。</p>
+<p>經過註冊的指令才可以在discord裡面跳出提示框(如下圖)</p>
+<figure>
+    <img src="5.jpg" width="95%" style="margin:auto;">
+    <center><figcaption><i>圖五、指令提示框</i></figcaption></center>
+</figure>
+
+<p>回到 <code>index.js</code> 加入事件監聽:<br><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">const &#123; Client, GatewayIntentBits &#125; = require(&#x27;discord.js&#x27;);</span><br><span class="line">const &#123; token &#125; = require(&#x27;./config.json&#x27;);</span><br><span class="line"></span><br><span class="line">const client = new Client(&#123; intents: [GatewayIntentBits.Guilds] &#125;);</span><br><span class="line"></span><br><span class="line">client.once(&#x27;ready&#x27;, () =&gt; &#123;</span><br><span class="line">	console.log(&#x27;Ready!&#x27;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="addition">+ client.on(&#x27;interactionCreate&#x27;, async interaction =&gt; &#123;</span></span><br><span class="line"><span class="addition">+ 	if (!interaction.isChatInputCommand()) return;</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+ 	const &#123; commandName &#125; = interaction;</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+ 	if (commandName === &#x27;ping&#x27;) &#123;</span></span><br><span class="line"><span class="addition">+ 		await interaction.reply(&#x27;Pong!&#x27;);</span></span><br><span class="line"><span class="addition">+ 	&#125; else if (commandName === &#x27;server&#x27;) &#123;</span></span><br><span class="line"><span class="addition">+ 		await interaction.reply(`Server name: $&#123;interaction.guild.name&#125;\nTotal members: $&#123;interaction.guild.memberCount&#125;`);</span></span><br><span class="line"><span class="addition">+ 	&#125; else if (commandName === &#x27;user&#x27;) &#123;</span></span><br><span class="line"><span class="addition">+ 		await interaction.reply(`Your tag: $&#123;interaction.user.tag&#125;\nYour id: $&#123;interaction.user.id&#125;`);</span></span><br><span class="line"><span class="addition">+ 	&#125;</span></span><br><span class="line"><span class="addition">+ &#125;);</span></span><br><span class="line"></span><br><span class="line">client.login(token);</span><br></pre></td></tr></table></figure></p>
+<p>到此就完成最基本的Discord bot了，可以自動回覆關鍵字~ 接下來會講一下 <code>Command handling</code>、<code>Event handling</code>，雖然不是必要的內容，但會讓整個專案架構比較系統化，不會讓code又臭又長!</p>
+<figure>
+    <img src="6.jpg" width="95%" style="margin:auto;">
+    <center><figcaption><i>圖六、基本聊天機器人完成!💯</i></figcaption></center>
+</figure>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://discordjs.guide/#before-you-begin">discord.js guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chengche6230/Discord-Bot-Tutorial/tree/main/Get-started/Demo-bot">Code</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    歡迎打賞(●'◡'●)
+  </button>
+  <div id="qr" style="display: none;">
+      <div style="display: inline-block;">
+        <img src="/images/eth.jpg" alt="大哲 以太幣 Eth">
+        <p>以太幣 Eth</p>
+      </div>
+      <div style="display: inline-block;">
+        <img src="/images/jko.jpg" alt="大哲 街口支付 JKO Pay">
+        <p>街口支付 JKO Pay</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Discord-bot/" rel="tag"># Discord bot</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/21/bitcoin/" rel="prev" title="為什麼你要買比特幣?">
+      <i class="fa fa-chevron-left"></i> 為什麼你要買比特幣?
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8BDiscord-Bot"><span class="nav-number">1.</span> <span class="nav-text">建立Discord Bot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A9%E7%94%A8Discord-js%E8%88%87%E6%A9%9F%E5%99%A8%E4%BA%BA%E4%BA%92%E5%8B%95"><span class="nav-number">2.</span> <span class="nav-text">利用Discord.js與機器人互動</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prerequisite"><span class="nav-number">2.1.</span> <span class="nav-text">Prerequisite</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BC%89Discord-js"><span class="nav-number">2.2.</span> <span class="nav-text">下載Discord.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Initial-files"><span class="nav-number">2.3.</span> <span class="nav-text">Initial files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E4%BA%92%E5%8B%95%E6%8C%87%E4%BB%A4"><span class="nav-number">2.4.</span> <span class="nav-text">建立互動指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="大哲"
+      src="/images/pfp.jpg">
+  <p class="site-author-name" itemprop="name">大哲</p>
+  <div class="site-description" itemprop="description">你有多自律，就有多自由</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100006869535711" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100006869535711" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/chengxche/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;chengxche&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/cheng-che-cheng-645055232/" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;cheng-che-cheng-645055232&#x2F;" rel="noopener" target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/chengche6230" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chengche6230" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:chengche6230@gmail.com" title="E-Mail → mailto:chengche6230@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">大哲</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">64k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">58 分鐘</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 驅動
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'eMaEhfXAM42Qmn4jG';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+
+  <script src="/js/cursor/jquery-1.11.3.min.js"></script>
+  <script async src="/js/cursor/text.js"></script>
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '0ce2dc84ae1bf833e8aa',
+      clientSecret: '55751e87e7edb2ce6f86d39b2a98ab9d056c5e47',
+      repo        : 'chengche6230.github.io',
+      owner       : 'chengche6230',
+      admin       : ['chengche6230'],
+      id          : '86231d947f17dcf122f3b8b3f42dbdb3',
+        language: 'zh-TW',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
