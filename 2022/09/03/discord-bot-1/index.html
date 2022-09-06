@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://example.com/2022/09/03/discord-bot-1/5.jpg">
 <meta property="og:image" content="http://example.com/2022/09/03/discord-bot-1/6.jpg">
 <meta property="article:published_time" content="2022-09-03T06:58:55.000Z">
-<meta property="article:modified_time" content="2022-09-03T09:10:24.537Z">
+<meta property="article:modified_time" content="2022-09-06T15:18:20.060Z">
 <meta property="article:author" content="大哲">
 <meta property="article:tag" content="Discord bot">
 <meta name="twitter:card" content="summary">
@@ -197,10 +197,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2022-09-03 14:58:55 / 修改時間：17:10:24" itemprop="dateCreated datePublished" datetime="2022-09-03T14:58:55+08:00">2022-09-03</time>
+              <time title="創建時間：2022-09-03 14:58:55" itemprop="dateCreated datePublished" datetime="2022-09-03T14:58:55+08:00">2022-09-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-09-06 23:18:20" itemprop="dateModified" datetime="2022-09-06T23:18:20+08:00">2022-09-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -278,7 +284,7 @@
 <h3 id="Initial-files"><a href="#Initial-files" class="headerlink" title="Initial files"></a>Initial files</h3><p>分別建立 <code>config.json</code>、<code>index.js</code></p>
 <p><code>config.json</code>: 記錄clientId(上面的Application ID), guildId(<a target="_blank" rel="noopener" href="https://support.discord.com/hc/zh-tw/articles/206346498-%E6%88%91%E5%9C%A8%E5%93%AA%E8%A3%A1%E5%8F%AF%E4%BB%A5%E6%89%BE%E5%88%B0%E6%88%91%E7%9A%84%E7%94%A8%E6%88%B6-%E6%9C%8D%E5%8B%99%E5%99%A8-%E6%B6%88%E6%81%AFID-">如何找到伺服器ID?</a>), token(圖二)<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;clientId&quot;</span><span class="punctuation">:</span><span class="string">&quot;YOUR_APPLICATION_ID&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;guildId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;YOU_SERVER_ID&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;token&quot;</span><span class="punctuation">:</span> <span class="string">&quot;YOUR_TOKEN&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p><code>index.js</code>: main file，將來執行機器人的主要文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Require the necessary discord.js classes</span></span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Client</span>, <span class="title class_">GatewayIntentBits</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;discord.js&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; token &#125; = <span class="built_in">require</span>(<span class="string">&#x27;./config.json&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a new client instance</span></span><br><span class="line"><span class="keyword">const</span> client = <span class="keyword">new</span> <span class="title class_">Client</span>(&#123; <span class="attr">intents</span>: [<span class="title class_">GatewayIntentBits</span>.<span class="property">Guilds</span>] &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// When the client is ready, run this code (only once)</span></span><br><span class="line">client.<span class="title function_">once</span>(<span class="string">&#x27;ready&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Ready!&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Login to Discord with your client&#x27;s token</span></span><br><span class="line">client.<span class="title function_">login</span>(token);</span><br></pre></td></tr></table></figure></p>
-<p>新增完兩個文件後，執行 <code>node index.js</code>，若console出現 <code>Ready!</code> 就代表bot成功運行!<br>目前的檔案架構:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Demo-bot/</span><br><span class="line">    node_modules/</span><br><span class="line">    config.json</span><br><span class="line">    index.js</span><br><span class="line">    package-lock.json</span><br><span class="line">    package.json</span><br></pre></td></tr></table></figure></p>
+<p>新增完兩個文件後，執行 <code>node index.js</code>，若console出現 <code>Ready!</code> 就代表bot成功運行!<br>目前的檔案架構:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Demo-bot/</span><br><span class="line">├── node_modules/</span><br><span class="line">├── config.json</span><br><span class="line">├── index.js</span><br><span class="line">├── package-lock.json</span><br><span class="line">└── package.json</span><br></pre></td></tr></table></figure></p>
 <p>一切就緒後，就可以註冊指令讓bot在Discord內和大家互動了!</p>
 <h3 id="建立互動指令"><a href="#建立互動指令" class="headerlink" title="建立互動指令"></a>建立互動指令</h3><p>首先需要安裝 <code>@discordjs/rest</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @discordjs/rest</span><br></pre></td></tr></table></figure>
@@ -298,8 +304,8 @@
 </figure>
 
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://discordjs.guide/#before-you-begin">discord.js guide</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/chengche6230/Discord-Bot-Tutorial/tree/main/Get-started/Demo-bot">Code</a></li>
+<li><a target="_blank" rel="noopener" href="https://discordjs.guide/#before-you-begin">Discord.js guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chengche6230/Discord-Bot-Tutorial/tree/main/01_Get-Started/Demo-bot">Github Code</a></li>
 </ul>
 
     </div>
@@ -340,7 +346,10 @@
     <a href="/2022/08/21/bitcoin/" rel="prev" title="為什麼你要買比特幣?">
       <i class="fa fa-chevron-left"></i> 為什麼你要買比特幣?
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/06/discord-bot-2/" rel="next" title="【Discord Bot】02: Command & Event Handling">
+      【Discord Bot】02: Command & Event Handling <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -416,7 +425,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -482,12 +491,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="總字數">64k</span>
+    <span title="總字數">69k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">58 分鐘</span>
+    <span title="所需總閱讀時間">1:03</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 驅動
   </div>
