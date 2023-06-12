@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://example.com/2022/02/21/build-up-blog/hexo-init.jpg">
 <meta property="og:image" content="http://example.com/2022/02/21/build-up-blog/hexo-site.jpg">
 <meta property="article:published_time" content="2022-02-21T13:26:15.000Z">
-<meta property="article:modified_time" content="2023-03-21T07:11:38.007Z">
+<meta property="article:modified_time" content="2023-06-12T07:38:46.599Z">
 <meta property="article:author" content="大哲">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
@@ -205,7 +205,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2023-03-21 15:11:38" itemprop="dateModified" datetime="2023-03-21T15:11:38+08:00">2023-03-21</time>
+                <time title="修改時間：2023-06-12 15:38:46" itemprop="dateModified" datetime="2023-06-12T15:38:46+08:00">2023-06-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,7 +230,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>2.6k</span>
+              <span>2.7k</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -271,7 +271,7 @@
 <h4 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h4><p>完成Hexo初始建置後，就可以先將檔案等部署到Github上。在hexo資料夾底下輸入指令安裝需要的套件:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><br>到 <code>_config.yml</code> 中找到 <code>Deployment</code> 的區塊修改部署資訊，並將底下<i>username</i>改成自己的Github帳號:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure><br>接著將hexo部署上去:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure><br>完成後就可以透過 <code>https://&lt;username&gt;.github.io</code> 的網址進入到個人部落格了! Github有時候沒辦法馬上更新，稍微等個幾分鐘就可以看到自己的網站了，下圖是hexo預設的landscape主題模板。</p>
 <p><img src="hexo-site.jpg" height="100%" width="100%"></p>
 <h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><p>Hexo的指令都可以在官方網站中搜尋，而部落格最常做的事情之一就是發文章了，這裡稍微簡述一下發一篇文章的流程:</p>
-<h4 id="新增一篇文章"><a href="#新增一篇文章" class="headerlink" title="新增一篇文章"></a>新增一篇文章</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br><span class="line">hexo new draft &lt;title&gt; // 草稿</span><br></pre></td></tr></table></figure>
+<h4 id="新增一篇文章"><a href="#新增一篇文章" class="headerlink" title="新增一篇文章"></a>新增一篇文章</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br><span class="line">hexo new draft &lt;title&gt; // 草稿，<span class="string">&#x27;hexo publish &lt;title&gt;&#x27;</span>發布</span><br></pre></td></tr></table></figure>
 <ul>
 <li>文章支援Markdown語法，產生的檔案也是md檔</li>
 <li><code>title</code>只是md檔的檔名，實際文章的標題可以在md檔裡更改，建議不要有空格、非英文等，避免出錯</li>
@@ -401,7 +401,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -467,12 +467,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="總字數">82k</span>
+    <span title="總字數">83k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">1:15</span>
+    <span title="所需總閱讀時間">1:16</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 驅動
   </div>
