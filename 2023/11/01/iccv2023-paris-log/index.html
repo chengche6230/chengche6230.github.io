@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/guitar-color-64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/guitar-color-64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/guiar-color-48.png">
+  <link rel="mask-icon" href="/images/guitar-color.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="特地請了一週的假，千里迢迢飛了將近12000km來到巴黎就是為了出國旅遊 參加頂尖的國際研討會，除了巴黎踩踩點，也是第一次參加國際學術會議，真的是鄭姥姥進大觀園，身為小白看甚麼都好新奇🤩，就順手記錄下整個過程~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【ICCV 2023】在塞納河畔討論電腦視覺?! 開箱CV頂會">
+<meta property="og:url" content="http://example.com/2023/11/01/iccv2023-paris-log/index.html">
+<meta property="og:site_name" content="Che Blog">
+<meta property="og:description" content="特地請了一週的假，千里迢迢飛了將近12000km來到巴黎就是為了出國旅遊 參加頂尖的國際研討會，除了巴黎踩踩點，也是第一次參加國際學術會議，真的是鄭姥姥進大觀園，身為小白看甚麼都好新奇🤩，就順手記錄下整個過程~">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://example.com/2023/11/01/iccv2023-paris-log/1.jpg">
+<meta property="og:image" content="http://example.com/2023/11/01/iccv2023-paris-log/2.jpg">
+<meta property="og:image" content="http://example.com/2023/11/01/iccv2023-paris-log/3.jpg">
+<meta property="og:image" content="http://example.com/2023/11/01/iccv2023-paris-log/4.jpg">
+<meta property="og:image" content="http://example.com/2023/11/01/iccv2023-paris-log/5.jpg">
+<meta property="og:image" content="http://example.com/2023/11/01/iccv2023-paris-log/6.jpg">
+<meta property="og:image" content="http://example.com/2023/11/01/iccv2023-paris-log/7.jpg">
+<meta property="og:image" content="http://example.com/2023/11/01/iccv2023-paris-log/8.jpg">
+<meta property="og:image" content="http://example.com/2023/11/01/iccv2023-paris-log/9.jpg">
+<meta property="article:published_time" content="2023-11-01T14:39:12.000Z">
+<meta property="article:modified_time" content="2023-11-01T14:39:44.860Z">
+<meta property="article:author" content="大哲">
+<meta property="article:tag" content="研究所">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/11/01/iccv2023-paris-log/1.jpg">
+
+<link rel="canonical" href="http://example.com/2023/11/01/iccv2023-paris-log/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>【ICCV 2023】在塞納河畔討論電腦視覺?! 開箱CV頂會 | Che Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Che Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/01/iccv2023-paris-log/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pfp.jpg">
+      <meta itemprop="name" content="大哲">
+      <meta itemprop="description" content="你有多自律，就有多自由">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Che Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【ICCV 2023】在塞納河畔討論電腦視覺?! 開箱CV頂會
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-11-01 22:39:12 / 修改時間：22:39:44" itemprop="dateCreated datePublished" datetime="2023-11-01T22:39:12+08:00">2023-11-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E2%9B%AA-%E6%A0%A1%E5%9C%92%E7%A8%AE%E7%A8%AE/" itemprop="url" rel="index"><span itemprop="name">⛪ 校園種種</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>2 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>特地請了一週的假，千里迢迢飛了將近12000km來到巴黎就是為了<del>出國旅遊</del> 參加頂尖的國際研討會，除了巴黎踩踩點，也是第一次參加國際學術會議，真的是鄭姥姥進大觀園，身為小白看甚麼都好新奇🤩，就順手記錄下整個過程~</p>
+<span id="more"></span>
+<h2 id="會場環境"><a href="#會場環境" class="headerlink" title="會場環境"></a>會場環境</h2><p>今年ICCV舉辦在巴黎市區邊緣的Paris Convention Center會展中心，我們選擇搭T2輕軌從住宿的La Défense區沿著塞納河前往會場，抵達會場，正門就有一個酷酷的360度環形LED螢幕指著各個活動展場的位置👇 挺氣派的</p>
+<figure>
+    <img src="1.jpg" width="70%" style="margin:auto;">
+    <center><figcaption><i>會場入口的環形螢幕</i></figcaption></center>
+</figure>
+
+<p>沿著指示走了大約五分鐘抵達最深處的Hall 7，上去三樓就是ICCV的會議場館，馬上映入眼簾的就是門口旁邊大大的Google Deep Mind贊助廣告，身為認真的研究員當然要打卡踩點一下😎</p>
+<figure>
+    <img src="2.jpg" width="100%" style="margin:auto;">
+    <center><figcaption><i>大大的乾爹💸</i></figcaption></center>
+</figure>
+
+<h2 id="開幕式"><a href="#開幕式" class="headerlink" title="開幕式"></a>開幕式</h2><p>我們抵達時間有點遲到，匆忙註冊報到後就趕去開幕式，演講廳內坐滿了人，兩側及後方也站了很多人，當下真的有點被震撼到，全球最頂尖的CV研究員大概都在這了吧~</p>
+<figure>
+    <img src="3.jpg" width="100%" style="margin:auto;">
+</figure>
+
+
+<p>主持人照慣例講述了今年ICCV的投稿情形，總計8260篇的有效投稿，其中2161篇paper被接受(Acceptance rate 26%，和往年差不多)，比較讓我意外的是各個國家的投稿論文量，中國就包辦了近四成800多篇的paper，這個研究能量相當驚人(也相當卷?)，相比之下，美國僅300多篇的accepted paper就略為遜色，另外韓國有100多篇的論文排名第三，同為亞洲強國的日本卻僅有20幾篇，而台灣今年則有13篇投稿被接受，能成為13分之一真是莫大的榮幸😭。今年投稿領域以3D相關居冠，影像合成次之，我們投稿的motion領域則有60多篇paper被接受(約250篇的投稿)。</p>
+<p>主持人接者講解流程、場地介紹等，最後頒發paper award就結束了今年的開幕式，整體節奏很流暢，不會有過於冗長的長官演講，該傳遞的資訊都有明確表達，讚讚!💯</p>
+<p>開幕式結束，我們隨意找了一家會場內的麵包店買個可頌當早餐，結果吃完出來大會就開始擺桌子提供可頌吃到飽和咖啡(超虧…)</p>
+<h2 id="Demo-amp-廠商擺攤"><a href="#Demo-amp-廠商擺攤" class="headerlink" title="Demo &amp; 廠商擺攤"></a>Demo &amp; 廠商擺攤</h2><p>和校園就業博覽會一樣，這種場合一定少不了各大廠商的擺攤，Meta、Google、抖音等大廠都有擺設攤位，展示一些新技術以及offer機會。另外也有很多Demo的攤位，可以有更多互動性的交流，雖然和真正的產品還有一段落差，但也可以了解目前哪些新研究是可以落地的，而不僅是紙上談兵講講理論與實驗，我們也玩了幾個攤位的產品，整體來說是滿不錯的體驗~</p>
+<figure>
+    <img src="4.jpg" width="70%" style="margin:auto;">
+    <center><figcaption><i>其中一個互動式頭盔Demo攤位🤣</i></figcaption></center>
+</figure>
+
+<h2 id="Reception"><a href="#Reception" class="headerlink" title="Reception"></a>Reception</h2><p>今年沒有Banquet(cost down?)，唯一行程上的社交活動大概只有Reception，整個會場的不同角落都擺滿很多蛋糕&amp;小點心，也有飲料喝到飽(紅白酒、汽水果汁等)，沒吃晚餐又社恐的我們當然開始暴食哈，不過都是小點心實在很難吃飽</p>
+<figure>
+    <img src="5.jpg" width="100%" style="margin:auto;">
+</figure>
+
+<p>繞了一整圈會場後，鼓起勇氣和一個看起來是講中文的小姊姊搭話，於是就認識了一個來自深圳的博士姊姊，淺聊了兩岸環境的差異、學界”卷”的程度，和彼此生活上的不易之處，只能說大家都很辛苦呀…，後來和她的教授聊了一陣子研究方向就結束了Reception。</p>
+<p>整體來說，Reception交流氛圍不錯，很多老師會帶著自己的學生和別人交流認識，也可以藉此打聽彼此on-going的研究，可惜我們比較社恐&amp;語言隔閡就沒有待很久。至於餐飲部分就普普，和想像中沒有太大落差，大會也沒有另外安排其他活動(像今年CVPR就有Live band, Taiwan night等小活動)，稍微可惜。</p>
+<figure>
+    <img src="6.jpg" width="100%" style="margin:auto;">
+</figure>
+
+<h2 id="Poster"><a href="#Poster" class="headerlink" title="Poster"></a>Poster</h2><p>Poster在一個開放式的大空間，同時貼滿了數百張的海報，人潮真的是絡繹不絕，第一天逛的時候幾乎寸步難行，大家真的滿認真在交流技術與分享!</p>
+<figure>
+    <img src="7.jpg" width="100%" style="margin:auto;">
+    <center><figcaption><i>已經算是人比較少的區域😬</i></figcaption></center>
+</figure>
+
+<p>接著就是第二天早上的重頭戲，也是這趟旅程最主要的目的 - Poster報告。我們大概提早15分鐘就貼完海報準備完畢，此刻心情既興奮又緊張，很怕自己講得零零落落或是沒人光顧…</p>
+<figure>
+    <img src="8.jpg" width="75%" style="margin:auto;">
+</figure>
+
+<p>很顯然的，我們的擔心是多餘的。隨著人潮湧入，我們幾乎沒有空閒時間，陸續一直有人來詢問與交流(其中不乏看到清大以為是國人的老鐵們😂)，講解幾次後就順暢很多，這應該是這輩子講過最多英文的一天哈哈，順便檢驗自己的聽力&amp;口說，很喜歡這種和別人交流的感覺，尤其是能感受到他對我的作品有興趣。有一個外國小哥一來就問了非常多很critical的問題，甚至有些咄咄逼人的感覺，但結束討論後他給我看了手機上的清單，他跟我說這個session我就只看這五篇，你這篇是我最感興趣的，頓時有一種熱淚盈眶的感覺，大破防‼ 原來這是備受肯定的踏實感啊哈哈哈… 另外有一個滿年輕的教授，認真跟我討論完海報內容後，我們又繼續聊了十來分鐘，關於他們自己研究碰到的問題，換我提出各種疑惑(同時也是我方法的limitation)請他回答，聊完甚至邀請我去他們lab分享我的研究，雖然礙於時差等因素不了了之，但還是收穫了很多，結交了一位教授好友! 昨天Reception認識的小姊姊也有來看我們，能講中文的時候還是最舒服XD 講著講著，時間一下就過去了，人潮慢慢散去，我們也收拾好東西和老師去吃午餐，結束這次的poster。</p>
+<figure>
+    <img src="9.jpg" width="100%" style="margin:auto;">
+    <center><figcaption><i>CV LAB in Paris✨</i></figcaption></center>
+</figure>
+
+<p>原本預期中應該會很無聊的會議，整個過程下來其實真的玩得很開心，見識到了很多厲害的大神，也在poster收穫滿滿，並沒有想像中的沉悶(應該說無聊就會出去玩了XD)，這次的與會報告除了義務上需要參加，對我來說，更是將研究生涯做個總結畫上句號吧，將自己兩年來傾盡心力的研究成果呈現給同樣感興趣的陌生人，因為這個會議才將來自不同國家，有著不同膚色與語言的人們連結在一起，是一趟有別於逛逛景點打卡拍照的旅行!</p>
+<p>謝謝同行的旅伴&amp;老師們，btw會議當天隨手在<a target="_blank" rel="noopener" href="https://www.linkedin.com/feed/update/urn:li:activity:7115691393167093761/">LinkedIn上打卡的文章</a>竟然得到超高的迴響與流量🤣</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li>部分圖片來自ICCV2023官網: <a target="_blank" rel="noopener" href="https://iccv2023.thecvf.com/">https://iccv2023.thecvf.com/</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    歡迎打賞(●'◡'●)
+  </button>
+  <div id="qr" style="display: none;">
+      <div style="display: inline-block;">
+        <img src="/images/eth.jpg" alt="大哲 以太幣 Eth">
+        <p>以太幣 Eth</p>
+      </div>
+      <div style="display: inline-block;">
+        <img src="/images/jko.jpg" alt="大哲 街口支付 JKO Pay">
+        <p>街口支付 JKO Pay</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A0%94%E7%A9%B6%E6%89%80/" rel="tag"># 研究所</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/08/30/iccv2023-submission-review/" rel="prev" title="【ICCV 2023】從研究小白到頂會AC">
+      <i class="fa fa-chevron-left"></i> 【ICCV 2023】從研究小白到頂會AC
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%83%E5%A0%B4%E7%92%B0%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">會場環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%96%8B%E5%B9%95%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">開幕式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo-amp-%E5%BB%A0%E5%95%86%E6%93%BA%E6%94%A4"><span class="nav-number">3.</span> <span class="nav-text">Demo &amp; 廠商擺攤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reception"><span class="nav-number">4.</span> <span class="nav-text">Reception</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Poster"><span class="nav-number">5.</span> <span class="nav-text">Poster</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="大哲"
+      src="/images/pfp.jpg">
+  <p class="site-author-name" itemprop="name">大哲</p>
+  <div class="site-description" itemprop="description">你有多自律，就有多自由</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100006869535711" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100006869535711" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/chengxche/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;chengxche&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/cheng-che-cheng-645055232/" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;cheng-che-cheng-645055232&#x2F;" rel="noopener" target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/chengche6230" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chengche6230" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:chengche6230@gmail.com" title="E-Mail → mailto:chengche6230@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">大哲</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">89k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">1:21</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 驅動
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'eMaEhfXAM42Qmn4jG';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+
+  <script src="/js/cursor/jquery-1.11.3.min.js"></script>
+  <script async src="/js/cursor/text.js"></script>
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '0ce2dc84ae1bf833e8aa',
+      clientSecret: '55751e87e7edb2ce6f86d39b2a98ab9d056c5e47',
+      repo        : 'chengche6230.github.io',
+      owner       : 'chengche6230',
+      admin       : ['chengche6230'],
+      id          : 'e02d23964c894044f884c0cf8521cbaf',
+        language: 'zh-TW',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
