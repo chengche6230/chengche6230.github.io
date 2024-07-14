@@ -1,8 +1,9 @@
 var a_idx = 0;
 jQuery(document).ready(function($) {
     $("body").click(function(e) {
-        var a = new Array("真假", "確實", "笑死", "你這個人很皮欸", "靠我力量"); //有料
-        var color = new Array("#A7414A", "#282726", "#6A8A82", "#A37C27", "#563838");
+        var a = new Array("真假", "確實", "笑死", "急了", "靠我力量", "我跟你講啦", "來都來了");
+        var color = new Array("#FF1493", "#008B8B", "#8A2BE2", "#32CD32", "#FF4500", "#1E90FF", "#8B008B"
+);
         var $i = $("<span/>").text(a[a_idx]);
         var x = e.pageX,
             y = e.pageY;
